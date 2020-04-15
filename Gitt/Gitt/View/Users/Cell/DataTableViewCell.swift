@@ -6,7 +6,6 @@
 //  Copyright © 2020 CitusLabs. All rights reserved.
 //
 
-import Kingfisher
 import SnapKit
 import UIKit
 
@@ -110,40 +109,7 @@ class DataTableViewCell: BaseTableViewCell {
         self.label_Date.text = data.datePresentable
         
         let placeholder = KFCrossPlatformImage(named: "ic_placeholder")
-        self.imageView_Artwork.kf.setImage(
-            with: data.artworkResource,
-            placeholder: placeholder) { (result) in
-                switch result {
-                case .failure: self.imageView_Artwork.image = placeholder
-                default: break
-                }
-        }
-        
-        switch type {
-        case .short:
-            self.button_Get.setup(
-                data.getButtonTitlePresentable,
-                normalFont: UIFont.systemFont(ofSize: 14.0, weight: .medium),
-                normalTextColor: .systemBlue,
-                backgroundColor: .clear,
-                horizontalAlignment: .center
-            )
-            
-            self.constraint_ArtworkWidth?.update(offset: 50.0)
-            self.constraint_ArtworkHeight?.update(offset: 50.0)
-            
-        case .long:
-            self.button_Get.setup(
-                "GET",
-                normalFont: UIFont.systemFont(ofSize: 14.0, weight: .medium),
-                normalTextColor: .systemBlue,
-                backgroundColor: .clear,
-                horizontalAlignment: .center
-            )
-            
-            self.constraint_ArtworkWidth?.update(offset: 60.0)
-            self.constraint_ArtworkHeight?.update(offset: 90.0)
-        }
+
     }
     
     // MARK: Overrides

@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Kingfisher
 import RxCocoa
 import RxSwift
 

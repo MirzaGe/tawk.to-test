@@ -12,18 +12,7 @@ import UIKit
 class BaseTabBarController: UITabBarController {
     
     // MARK: - Properties
-    
-    lazy var searchSplitController: BaseSplitViewController = {
-        let splitViewController =  BaseSplitViewController()
-        let masterVC = SearchMasterViewController()
-        let detailVC = SearchDetailViewController(selectedResult: nil)
-        let masterNavController = UINavigationController(rootViewController: masterVC)
-        let detailNavController = UINavigationController(rootViewController: detailVC)
-        splitViewController.viewControllers = [masterNavController,detailNavController]
-        splitViewController.tabBarItem = AppTabs.tabBarItem(for: .search)
-        return splitViewController
-    }()
-    
+        
     lazy var dummyController1: UIViewController = {
         let controller = UIViewController()
         controller.tabBarItem = AppTabs.tabBarItem(for: .recents)

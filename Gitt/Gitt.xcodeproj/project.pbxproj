@@ -45,6 +45,7 @@
 		40C85A0E243F53E800D9B5BE /* UIView+iSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C85A0D243F53E800D9B5BE /* UIView+iSearch.swift */; };
 		40C85A10243F572300D9B5BE /* UIViewController+iSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C85A0F243F572300D9B5BE /* UIViewController+iSearch.swift */; };
 		40C85A12243F5E6800D9B5BE /* AppTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C85A11243F5E6800D9B5BE /* AppTabs.swift */; };
+		40E3A95624479D3500ACFFA6 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A95524479D3500ACFFA6 /* Reachability.swift */; };
 		E1648D5EE68C6414FF1B3022 /* Pods_GittTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DB5B5750FFBF29B0CDED082 /* Pods_GittTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -115,6 +116,7 @@
 		40C85A0D243F53E800D9B5BE /* UIView+iSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+iSearch.swift"; sourceTree = "<group>"; };
 		40C85A0F243F572300D9B5BE /* UIViewController+iSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+iSearch.swift"; sourceTree = "<group>"; };
 		40C85A11243F5E6800D9B5BE /* AppTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabs.swift; sourceTree = "<group>"; };
+		40E3A95524479D3500ACFFA6 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		4A1EA086DE6D1D6DF1FB8DA0 /* Pods-iSearch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iSearch.debug.xcconfig"; path = "Target Support Files/Pods-iSearch/Pods-iSearch.debug.xcconfig"; sourceTree = "<group>"; };
 		93B6B890F20098235A75C612 /* Pods_Gitt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gitt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4FA66FB349BD4F24A2ABD45 /* Pods-GittTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GittTests.release.xcconfig"; path = "Target Support Files/Pods-GittTests/Pods-GittTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -177,9 +179,9 @@
 		4064E818243E61BE00DE7384 = {
 			isa = PBXGroup;
 			children = (
-				4064E823243E61BE00DE7384 /* iSearch */,
-				4064E83D243E61C100DE7384 /* iSearchTests */,
-				4064E848243E61C100DE7384 /* iSearchUITests */,
+				4064E823243E61BE00DE7384 /* Gitt */,
+				4064E83D243E61C100DE7384 /* GittTests */,
+				4064E848243E61C100DE7384 /* GittUITests */,
 				4064E822243E61BE00DE7384 /* Products */,
 				0C7F54A77D10619ECCE1EA11 /* Pods */,
 				A99B060FDDE155E49E97D391 /* Frameworks */,
@@ -196,7 +198,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4064E823243E61BE00DE7384 /* iSearch */ = {
+		4064E823243E61BE00DE7384 /* Gitt */ = {
 			isa = PBXGroup;
 			children = (
 				40C859F6243E6A8400D9B5BE /* App */,
@@ -207,10 +209,10 @@
 				40C859F4243E6A7100D9B5BE /* Resources */,
 				40C859F5243E6A7800D9B5BE /* Utilities */,
 			);
-			path = iSearch;
+			path = Gitt;
 			sourceTree = "<group>";
 		};
-		4064E83D243E61C100DE7384 /* iSearchTests */ = {
+		4064E83D243E61C100DE7384 /* GittTests */ = {
 			isa = PBXGroup;
 			children = (
 				401745E8244106950055B0BD /* Mocks */,
@@ -221,10 +223,10 @@
 				4064E840243E61C100DE7384 /* Info.plist */,
 				40C2349824406D1100A5A462 /* iSearchTests-Bridging-Header.h */,
 			);
-			path = iSearchTests;
+			path = GittTests;
 			sourceTree = "<group>";
 		};
-		4064E848243E61C100DE7384 /* iSearchUITests */ = {
+		4064E848243E61C100DE7384 /* GittUITests */ = {
 			isa = PBXGroup;
 			children = (
 				40C234A82440E16900A5A462 /* Utilities */,
@@ -234,7 +236,7 @@
 				4064E84B243E61C100DE7384 /* Info.plist */,
 				40C234A52440E12900A5A462 /* iSearchUITests-Bridging-Header.h */,
 			);
-			path = iSearchUITests;
+			path = GittUITests;
 			sourceTree = "<group>";
 		};
 		4064E859243E69EA00DE7384 /* Model */ = {
@@ -385,6 +387,7 @@
 		40C859FB243F24A100D9B5BE /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				40E3A95524479D3500ACFFA6 /* Reachability.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -633,6 +636,7 @@
 				40C23485243FA56600A5A462 /* BaseTableViewCell.swift in Sources */,
 				40C2348D24404A5300A5A462 /* AppConfig.swift in Sources */,
 				40C2349124405D0900A5A462 /* UIButton+iSearch.swift in Sources */,
+				40E3A95624479D3500ACFFA6 /* Reachability.swift in Sources */,
 				4064E82F243E61BE00DE7384 /* iSearch.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

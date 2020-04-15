@@ -6,7 +6,6 @@
 //  Copyright © 2020 CitusLabs. All rights reserved.
 //
 
-import Kingfisher
 import SnapKit
 import RxCocoa
 import RxSwift
@@ -93,6 +92,7 @@ class SearchDetailViewController: BaseViewController {
     private func setupBindings() {
         weak var weakSelf = self
         
+        /*
         self.viewModel.artworkResource.subscribe(onNext: { resource in
             let placeholder = KFCrossPlatformImage(named: "ic_placeholder")
             weakSelf?.imageView_Artwork.kf.setImage(
@@ -103,7 +103,7 @@ class SearchDetailViewController: BaseViewController {
                     default: break
                     }
             }
-        }).disposed(by: self.disposeBag)
+        }).disposed(by: self.disposeBag)*/
         
         self.viewModel.trackTitlePresentable
             .bind(to: self.label_Title.rx.text)
