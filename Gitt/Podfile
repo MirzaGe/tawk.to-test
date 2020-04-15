@@ -9,12 +9,9 @@ def test_pods
 end
 
 target 'iSearch' do
-    pod 'Kingfisher',                 '~> 5.9.0'              # Loading of url image into imageViews
-    pod 'Moya',                       '~> 13.0.1'             # Networking Abstraction Layer
     pod 'RxSwift',                    '~> 5.0.1'              # Reactive/Functional Programming Framework
     pod 'RxCocoa',                    '~> 5.0.1'              # Reactive/Functional Programming Framework
     pod 'SnapKit',                    '~> 5.0.1'              # Constraint Programmatically.
-    pod 'SwiftDate',                  '~> 6.1.0'              # Dates Handler
     
     target 'iSearchTests' do
         test_pods
