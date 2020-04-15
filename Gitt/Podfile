@@ -8,12 +8,12 @@ def test_pods
     inherit! :search_paths
 end
 
-target 'iSearch' do
+target 'Gitt' do
     pod 'RxSwift',                    '~> 5.0.1'              # Reactive/Functional Programming Framework
     pod 'RxCocoa',                    '~> 5.0.1'              # Reactive/Functional Programming Framework
     pod 'SnapKit',                    '~> 5.0.1'              # Constraint Programmatically.
     
-    target 'iSearchTests' do
+    target 'GittTests' do
         test_pods
     end
 end
@@ -21,7 +21,7 @@ end
 post_install do |installer|
     installer.pods_project.targets.each do |target|
         target.build_configurations.each do |config|
-            config.build_settings['SWIFT_VERSION'] = '5.0'
+            config.build_settings['SWIFT_VERSION'] = '5.1'
         end
     end
 end

@@ -1,0 +1,6 @@
+framework module Pods_Gitt {
+  umbrella header "Pods-Gitt-umbrella.h"
+
+  export *
+  module * { export * }
+}
