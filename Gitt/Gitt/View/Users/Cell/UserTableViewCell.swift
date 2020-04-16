@@ -1,5 +1,5 @@
 //
-//  DataTableViewCell.swift
+//  UserTableViewCell.swift
 //  Gitt
 //
 //  Created by Glenn Von Posadas on 4/10/20.
@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import Combine
 
-class DataTableViewCell: BaseTableViewCell {
+class UserTableViewCell: BaseTableViewCell {
     
     // MARK: - Properties
     

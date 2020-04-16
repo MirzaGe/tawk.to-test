@@ -99,12 +99,12 @@ extension SearchMasterViewModel: UITableViewDelegate {
 
 extension SearchMasterViewModel: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell: DataTableViewCell?
+        var cell: UserTableViewCell?
         
-        cell = tableView.dequeueReusableCell(withIdentifier: DataTableViewCell.identifier) as? DataTableViewCell
+        cell = tableView.dequeueReusableCell(withIdentifier: UserTableViewCell.identifier) as? UserTableViewCell
         
         if cell == nil {
-            cell = DataTableViewCell()
+            cell = UserTableViewCell()
         }
         
 //        if let results = self.searchResult?.results {

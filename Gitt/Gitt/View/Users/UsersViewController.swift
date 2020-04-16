@@ -38,9 +38,13 @@ class UsersViewController: BaseViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         
         self.view.addSubview(self.tableView)
-        self.tableView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
+        self.tableView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.tableView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            self.tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            self.tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+        ])
         
         self.addPullToRefreshControl(to: self.tableView)
         

@@ -60,7 +60,7 @@ class BaseTableView: UITableView {
         // Register custom cells.
         
         self.register(BaseTableViewCell.self, forCellReuseIdentifier: BaseTableViewCell.identifier)
-        self.register(DataTableViewCell.self, forCellReuseIdentifier: DataTableViewCell.identifier)
+        self.register(UserTableViewCell.self, forCellReuseIdentifier: UserTableViewCell.identifier)
         
         // Set the footer and header to remove extra blank lines
         

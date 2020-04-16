@@ -23,28 +23,28 @@
 		408A410D244856D9004A6BD5 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408A410C244856D9004A6BD5 /* ImageCache.swift */; };
 		408A410F24485861004A6BD5 /* CacheConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408A410E24485861004A6BD5 /* CacheConfig.swift */; };
 		408A411124485B38004A6BD5 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408A411024485B38004A6BD5 /* ImageLoader.swift */; };
+		40B35A332448999900770EA3 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B35A322448999900770EA3 /* APIRequest.swift */; };
 		40C23479243F77BF00A5A462 /* AppEnv.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C23478243F77BF00A5A462 /* AppEnv.swift */; };
 		40C23480243F997700A5A462 /* SearchMasterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C2347F243F997700A5A462 /* SearchMasterViewModel.swift */; };
 		40C23485243FA56600A5A462 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C23484243FA56600A5A462 /* BaseTableViewCell.swift */; };
-		40C23487243FA5E100A5A462 /* DataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C23486243FA5E100A5A462 /* DataTableViewCell.swift */; };
+		40C23487243FA5E100A5A462 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C23486243FA5E100A5A462 /* UserTableViewCell.swift */; };
 		40C2348B244048AA00A5A462 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C2348A244048AA00A5A462 /* BaseViewModel.swift */; };
 		40C2348D24404A5300A5A462 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C2348C24404A5300A5A462 /* AppConfig.swift */; };
 		40C2348F2440582000A5A462 /* BaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C2348E2440582000A5A462 /* BaseTableView.swift */; };
-		40C2349124405D0900A5A462 /* UIButton+iSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C2349024405D0900A5A462 /* UIButton+iSearch.swift */; };
+		40C2349124405D0900A5A462 /* UIButton+Gitt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C2349024405D0900A5A462 /* UIButton+Gitt.swift */; };
 		40C2349324405D4B00A5A462 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C2349224405D4B00A5A462 /* BaseButton.swift */; };
 		40C2349A24406D1200A5A462 /* ResultHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C2349924406D1200A5A462 /* ResultHelperTests.swift */; };
 		40C234A22440A4EE00A5A462 /* AppDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C234A12440A4EE00A5A462 /* AppDefaults.swift */; };
 		40C234A42440A52F00A5A462 /* AppDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C234A32440A52F00A5A462 /* AppDefaultsKey.swift */; };
 		40C234A72440E12900A5A462 /* BaseUITestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C234A62440E12900A5A462 /* BaseUITestCase.swift */; };
-		40C234AA2440E19600A5A462 /* XCUIApplication+iSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C234A92440E19600A5A462 /* XCUIApplication+iSearch.swift */; };
-		40C234AC2440E1AE00A5A462 /* XCTestCase+iSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C234AB2440E1AE00A5A462 /* XCTestCase+iSearch.swift */; };
+		40C234AA2440E19600A5A462 /* XCUIApplication+Gitt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C234A92440E19600A5A462 /* XCUIApplication+Gitt.swift */; };
+		40C234AC2440E1AE00A5A462 /* XCTestCase+Gitt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C234AB2440E1AE00A5A462 /* XCTestCase+Gitt.swift */; };
 		40C234AE2440E4BF00A5A462 /* UsersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C234AD2440E4BF00A5A462 /* UsersUITests.swift */; };
 		40C859FE243F24C400D9B5BE /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C859FD243F24C400D9B5BE /* BaseViewController.swift */; };
 		40C85A00243F24E100D9B5BE /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C859FF243F24E100D9B5BE /* UsersViewController.swift */; };
-		40C85A0C243F532D00D9B5BE /* UIColor+iSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C85A0B243F532D00D9B5BE /* UIColor+iSearch.swift */; };
-		40C85A0E243F53E800D9B5BE /* UIView+iSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C85A0D243F53E800D9B5BE /* UIView+iSearch.swift */; };
-		40C85A10243F572300D9B5BE /* UIViewController+iSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C85A0F243F572300D9B5BE /* UIViewController+iSearch.swift */; };
-		40C85A12243F5E6800D9B5BE /* AppTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C85A11243F5E6800D9B5BE /* AppTabs.swift */; };
+		40C85A0C243F532D00D9B5BE /* UIColor+Gitt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C85A0B243F532D00D9B5BE /* UIColor+Gitt.swift */; };
+		40C85A0E243F53E800D9B5BE /* UIView+Gitt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C85A0D243F53E800D9B5BE /* UIView+Gitt.swift */; };
+		40C85A10243F572300D9B5BE /* UIViewController+Gitt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C85A0F243F572300D9B5BE /* UIViewController+Gitt.swift */; };
 		40E3A95624479D3500ACFFA6 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A95524479D3500ACFFA6 /* Reachability.swift */; };
 		E1648D5EE68C6414FF1B3022 /* Pods_GittTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DB5B5750FFBF29B0CDED082 /* Pods_GittTests.framework */; };
 /* End PBXBuildFile section */
@@ -68,9 +68,7 @@
 
 /* Begin PBXFileReference section */
 		0DB5B5750FFBF29B0CDED082 /* Pods_GittTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GittTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2C18CAF9391836986724569D /* Pods-iSearch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iSearch.release.xcconfig"; path = "Target Support Files/Pods-iSearch/Pods-iSearch.release.xcconfig"; sourceTree = "<group>"; };
 		2EE702BA7F2A0ED70757630C /* Pods-Gitt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gitt.debug.xcconfig"; path = "Target Support Files/Pods-Gitt/Pods-Gitt.debug.xcconfig"; sourceTree = "<group>"; };
-		3860621DBEA8FF4328F7D401 /* Pods-iSearchTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iSearchTests.release.xcconfig"; path = "Target Support Files/Pods-iSearchTests/Pods-iSearchTests.release.xcconfig"; sourceTree = "<group>"; };
 		401745E02440FD780055B0BD /* UserViewerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewerUITests.swift; sourceTree = "<group>"; };
 		401745E22441016A0055B0BD /* MockSearchMasterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSearchMasterDelegate.swift; sourceTree = "<group>"; };
 		401745E42441053F0055B0BD /* BaseUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUnitTests.swift; sourceTree = "<group>"; };
@@ -92,35 +90,33 @@
 		408A410C244856D9004A6BD5 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		408A410E24485861004A6BD5 /* CacheConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheConfig.swift; sourceTree = "<group>"; };
 		408A411024485B38004A6BD5 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		40B35A322448999900770EA3 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		40C23478243F77BF00A5A462 /* AppEnv.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnv.swift; sourceTree = "<group>"; };
 		40C2347F243F997700A5A462 /* SearchMasterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMasterViewModel.swift; sourceTree = "<group>"; };
 		40C23484243FA56600A5A462 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
-		40C23486243FA5E100A5A462 /* DataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTableViewCell.swift; sourceTree = "<group>"; };
+		40C23486243FA5E100A5A462 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		40C2348A244048AA00A5A462 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		40C2348C24404A5300A5A462 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		40C2348E2440582000A5A462 /* BaseTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableView.swift; sourceTree = "<group>"; };
-		40C2349024405D0900A5A462 /* UIButton+iSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+iSearch.swift"; sourceTree = "<group>"; };
+		40C2349024405D0900A5A462 /* UIButton+Gitt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Gitt.swift"; sourceTree = "<group>"; };
 		40C2349224405D4B00A5A462 /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		40C2349924406D1200A5A462 /* ResultHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultHelperTests.swift; sourceTree = "<group>"; };
 		40C234A12440A4EE00A5A462 /* AppDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDefaults.swift; sourceTree = "<group>"; };
 		40C234A32440A52F00A5A462 /* AppDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDefaultsKey.swift; sourceTree = "<group>"; };
 		40C234A62440E12900A5A462 /* BaseUITestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUITestCase.swift; sourceTree = "<group>"; };
-		40C234A92440E19600A5A462 /* XCUIApplication+iSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIApplication+iSearch.swift"; sourceTree = "<group>"; };
-		40C234AB2440E1AE00A5A462 /* XCTestCase+iSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+iSearch.swift"; sourceTree = "<group>"; };
+		40C234A92440E19600A5A462 /* XCUIApplication+Gitt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIApplication+Gitt.swift"; sourceTree = "<group>"; };
+		40C234AB2440E1AE00A5A462 /* XCTestCase+Gitt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Gitt.swift"; sourceTree = "<group>"; };
 		40C234AD2440E4BF00A5A462 /* UsersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersUITests.swift; sourceTree = "<group>"; };
 		40C859FD243F24C400D9B5BE /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		40C859FF243F24E100D9B5BE /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
-		40C85A0B243F532D00D9B5BE /* UIColor+iSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+iSearch.swift"; sourceTree = "<group>"; };
-		40C85A0D243F53E800D9B5BE /* UIView+iSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+iSearch.swift"; sourceTree = "<group>"; };
-		40C85A0F243F572300D9B5BE /* UIViewController+iSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+iSearch.swift"; sourceTree = "<group>"; };
-		40C85A11243F5E6800D9B5BE /* AppTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabs.swift; sourceTree = "<group>"; };
+		40C85A0B243F532D00D9B5BE /* UIColor+Gitt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Gitt.swift"; sourceTree = "<group>"; };
+		40C85A0D243F53E800D9B5BE /* UIView+Gitt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Gitt.swift"; sourceTree = "<group>"; };
+		40C85A0F243F572300D9B5BE /* UIViewController+Gitt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Gitt.swift"; sourceTree = "<group>"; };
 		40E3A95524479D3500ACFFA6 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
-		4A1EA086DE6D1D6DF1FB8DA0 /* Pods-iSearch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iSearch.debug.xcconfig"; path = "Target Support Files/Pods-iSearch/Pods-iSearch.debug.xcconfig"; sourceTree = "<group>"; };
 		93B6B890F20098235A75C612 /* Pods_Gitt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gitt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4FA66FB349BD4F24A2ABD45 /* Pods-GittTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GittTests.release.xcconfig"; path = "Target Support Files/Pods-GittTests/Pods-GittTests.release.xcconfig"; sourceTree = "<group>"; };
 		B92B55760AE5675357921205 /* Pods-Gitt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gitt.release.xcconfig"; path = "Target Support Files/Pods-Gitt/Pods-Gitt.release.xcconfig"; sourceTree = "<group>"; };
 		BE7EAC48A87A0B42D0F22415 /* Pods-GittTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GittTests.debug.xcconfig"; path = "Target Support Files/Pods-GittTests/Pods-GittTests.debug.xcconfig"; sourceTree = "<group>"; };
-		D92D5823F1FD4C51D11F6C03 /* Pods-iSearchTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iSearchTests.debug.xcconfig"; path = "Target Support Files/Pods-iSearchTests/Pods-iSearchTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,10 +149,6 @@
 		0C7F54A77D10619ECCE1EA11 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				4A1EA086DE6D1D6DF1FB8DA0 /* Pods-iSearch.debug.xcconfig */,
-				2C18CAF9391836986724569D /* Pods-iSearch.release.xcconfig */,
-				D92D5823F1FD4C51D11F6C03 /* Pods-iSearchTests.debug.xcconfig */,
-				3860621DBEA8FF4328F7D401 /* Pods-iSearchTests.release.xcconfig */,
 				2EE702BA7F2A0ED70757630C /* Pods-Gitt.debug.xcconfig */,
 				B92B55760AE5675357921205 /* Pods-Gitt.release.xcconfig */,
 				BE7EAC48A87A0B42D0F22415 /* Pods-GittTests.debug.xcconfig */,
@@ -244,6 +236,24 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		40B35A2F244895BB00770EA3 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				40E3A95524479D3500ACFFA6 /* Reachability.swift */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
+		40B35A30244895C300770EA3 /* ImageLoader */ = {
+			isa = PBXGroup;
+			children = (
+				408A410C244856D9004A6BD5 /* ImageCache.swift */,
+				408A410E24485861004A6BD5 /* CacheConfig.swift */,
+				408A411024485B38004A6BD5 /* ImageLoader.swift */,
+			);
+			path = ImageLoader;
+			sourceTree = "<group>";
+		};
 		40C2346C243F70C100A5A462 /* Users */ = {
 			isa = PBXGroup;
 			children = (
@@ -270,7 +280,7 @@
 		40C23483243FA38F00A5A462 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				40C23486243FA5E100A5A462 /* DataTableViewCell.swift */,
+				40C23486243FA5E100A5A462 /* UserTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -294,8 +304,8 @@
 		40C234A82440E16900A5A462 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				40C234A92440E19600A5A462 /* XCUIApplication+iSearch.swift */,
-				40C234AB2440E1AE00A5A462 /* XCTestCase+iSearch.swift */,
+				40C234A92440E19600A5A462 /* XCUIApplication+Gitt.swift */,
+				40C234AB2440E1AE00A5A462 /* XCTestCase+Gitt.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -339,10 +349,10 @@
 		40C859F5243E6A7800D9B5BE /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				40C85A0B243F532D00D9B5BE /* UIColor+iSearch.swift */,
-				40C85A0D243F53E800D9B5BE /* UIView+iSearch.swift */,
-				40C85A0F243F572300D9B5BE /* UIViewController+iSearch.swift */,
-				40C2349024405D0900A5A462 /* UIButton+iSearch.swift */,
+				40C85A0B243F532D00D9B5BE /* UIColor+Gitt.swift */,
+				40C85A0D243F53E800D9B5BE /* UIView+Gitt.swift */,
+				40C85A0F243F572300D9B5BE /* UIViewController+Gitt.swift */,
+				40C2349024405D0900A5A462 /* UIButton+Gitt.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -355,7 +365,6 @@
 				40C234A12440A4EE00A5A462 /* AppDefaults.swift */,
 				40C234A32440A52F00A5A462 /* AppDefaultsKey.swift */,
 				40C23478243F77BF00A5A462 /* AppEnv.swift */,
-				40C85A11243F5E6800D9B5BE /* AppTabs.swift */,
 				4064E826243E61BE00DE7384 /* SceneDelegate.swift */,
 			);
 			path = App;
@@ -381,10 +390,9 @@
 		40C859FB243F24A100D9B5BE /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				40E3A95524479D3500ACFFA6 /* Reachability.swift */,
-				408A410C244856D9004A6BD5 /* ImageCache.swift */,
-				408A410E24485861004A6BD5 /* CacheConfig.swift */,
-				408A411024485B38004A6BD5 /* ImageLoader.swift */,
+				40B35A322448999900770EA3 /* APIRequest.swift */,
+				40B35A30244895C300770EA3 /* ImageLoader */,
+				40B35A2F244895BB00770EA3 /* Reachability */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -612,16 +620,16 @@
 				4064E825243E61BE00DE7384 /* AppDelegate.swift in Sources */,
 				40C234A22440A4EE00A5A462 /* AppDefaults.swift in Sources */,
 				40C2348B244048AA00A5A462 /* BaseViewModel.swift in Sources */,
+				40B35A332448999900770EA3 /* APIRequest.swift in Sources */,
 				40C2348F2440582000A5A462 /* BaseTableView.swift in Sources */,
-				40C85A10243F572300D9B5BE /* UIViewController+iSearch.swift in Sources */,
-				40C85A0E243F53E800D9B5BE /* UIView+iSearch.swift in Sources */,
+				40C85A10243F572300D9B5BE /* UIViewController+Gitt.swift in Sources */,
+				40C85A0E243F53E800D9B5BE /* UIView+Gitt.swift in Sources */,
 				40C23479243F77BF00A5A462 /* AppEnv.swift in Sources */,
-				40C23487243FA5E100A5A462 /* DataTableViewCell.swift in Sources */,
+				40C23487243FA5E100A5A462 /* UserTableViewCell.swift in Sources */,
 				40C234A42440A52F00A5A462 /* AppDefaultsKey.swift in Sources */,
 				40C859FE243F24C400D9B5BE /* BaseViewController.swift in Sources */,
 				402F5A6B24482C67003FC6D2 /* Gitt.xcdatamodeld in Sources */,
-				40C85A0C243F532D00D9B5BE /* UIColor+iSearch.swift in Sources */,
-				40C85A12243F5E6800D9B5BE /* AppTabs.swift in Sources */,
+				40C85A0C243F532D00D9B5BE /* UIColor+Gitt.swift in Sources */,
 				4064E827243E61BE00DE7384 /* SceneDelegate.swift in Sources */,
 				408A410F24485861004A6BD5 /* CacheConfig.swift in Sources */,
 				40C23480243F997700A5A462 /* SearchMasterViewModel.swift in Sources */,
@@ -631,7 +639,7 @@
 				40C85A00243F24E100D9B5BE /* UsersViewController.swift in Sources */,
 				40C23485243FA56600A5A462 /* BaseTableViewCell.swift in Sources */,
 				40C2348D24404A5300A5A462 /* AppConfig.swift in Sources */,
-				40C2349124405D0900A5A462 /* UIButton+iSearch.swift in Sources */,
+				40C2349124405D0900A5A462 /* UIButton+Gitt.swift in Sources */,
 				40E3A95624479D3500ACFFA6 /* Reachability.swift in Sources */,
 				402F5A6D24482C76003FC6D2 /* User.swift in Sources */,
 			);
@@ -656,8 +664,8 @@
 			files = (
 				40C234A72440E12900A5A462 /* BaseUITestCase.swift in Sources */,
 				401745E12440FD780055B0BD /* UserViewerUITests.swift in Sources */,
-				40C234AA2440E19600A5A462 /* XCUIApplication+iSearch.swift in Sources */,
-				40C234AC2440E1AE00A5A462 /* XCTestCase+iSearch.swift in Sources */,
+				40C234AA2440E19600A5A462 /* XCUIApplication+Gitt.swift in Sources */,
+				40C234AC2440E1AE00A5A462 /* XCTestCase+Gitt.swift in Sources */,
 				40C234AE2440E4BF00A5A462 /* UsersUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

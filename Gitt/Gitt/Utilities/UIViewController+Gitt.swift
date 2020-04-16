@@ -6,7 +6,6 @@
 //  Copyright © 2020 CitusLabs. All rights reserved.
 //
 
-import SnapKit
 import UIKit
 
 var windowScene: UIScene? = {
@@ -46,45 +45,6 @@ extension UIViewController {
             return current(controller: presented)
         }
         return controller
-    }
-    
-    /// Adds a scrollView and attached it as a subview for `BaseViewController` subclassing controllers.
-    /// Adds as well a clear view that serves as a stretcher for the scrollView's width.
-    ///
-    /// - Parameter shouldExtendToTopEdge: If true, top is equalToSuperView. Otherwise, set to 64.0
-    /// - Parameter screenWidth: Useful for split controllers.
-    /// - Parameter block: Accepts the `containerView` which can be used in the completion for setting up it's subviews.
-    func addScrollView(
-        to aView: UIView,
-        shouldExtendToTopEdge: Bool = true,
-        screenWidth: CGFloat = AppConfig.screenWidth,
-        block: ((_ contentView: UIView, _ topScrollViewConstraint: Constraint?, _ contentViewWidthConstraint: Constraint?) -> Void)) {
-        var topConstraint: Constraint?
-        var contentViewWidthConstraint: Constraint?
-        
-        guard let baseVC = self as? BaseViewController else { return }
-        aView.addSubview(baseVC.scrollView)
-        baseVC.scrollView.snp.makeConstraints {
-            $0.leading.trailing.bottom.equalToSuperview()
-            if shouldExtendToTopEdge {
-                topConstraint = $0.top.equalToSuperview().constraint
-            } else {
-                // Can be a one liner, but this is just an experiment.
-                // We could use `constraintToTop`.
-                topConstraint = $0.top.equalToSuperview().inset(64.0).constraint
-            }
-        }
-        
-        baseVC.contentView = UIView()
-        baseVC.contentView.backgroundColor = .clear
-        baseVC.scrollView.addSubview(baseVC.contentView)
-        baseVC.contentView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-            contentViewWidthConstraint = $0.width.equalTo(screenWidth).constraint
-        }
-        
-        // Now let the controller add its subviews in this block
-        block(baseVC.contentView, topConstraint, contentViewWidthConstraint)
     }
     
     /**

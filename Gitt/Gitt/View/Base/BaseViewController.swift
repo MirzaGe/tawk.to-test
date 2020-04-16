@@ -6,7 +6,6 @@
 //  Copyright © 2020 CitusLabs. All rights reserved.
 //
 
-import SnapKit
 import UIKit
 
 class BaseViewController: UIViewController {
@@ -32,23 +31,6 @@ class BaseViewController: UIViewController {
         return refreshControl
     }()
     
-    lazy var scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.backgroundColor = .clear
-        scrollView.alwaysBounceVertical = true
-        scrollView.showsVerticalScrollIndicator = true
-        scrollView.showsHorizontalScrollIndicator = false
-        scrollView.keyboardDismissMode = .interactive
-        return scrollView
-    }()
-    
-    /// Content view for the `scrollView`.
-    lazy var contentView: UIView = {
-        let contentView = UIView()
-        contentView.backgroundColor = .clear
-        return contentView
-    }()
-
     lazy var tableView: BaseTableView = {
         let tableView = BaseTableView(frame: .zero, style: .plain)
         tableView.backgroundColor = .clear
@@ -60,22 +42,23 @@ class BaseViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 12.0)
         label.textColor = .textColor
         label.text = "LOADING"
+        label.translatesAutoresizingMaskIntoConstraints = false
         
         let activityIndicator = UIActivityIndicatorView(style: .medium)
         activityIndicator.startAnimating()
         activityIndicator.tintColor = .textColor
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         
         let view = UIView.new(backgroundColor: .clear, isHidden: true)
         view.addSubviews(label, activityIndicator)
         
-        activityIndicator.snp.makeConstraints {
-            $0.top.centerX.equalToSuperview()
-        }
-        
-        label.snp.makeConstraints {
-            $0.top.equalTo(activityIndicator.snp.bottom).offset(8.0)
-            $0.centerX.equalToSuperview()
-        }
+        NSLayoutConstraint.activate([
+            activityIndicator.topAnchor.constraint(equalTo: view.topAnchor),
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            label.topAnchor.constraint(equalTo: activityIndicator.bottomAnchor, constant: 8.0),
+            label.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
         
         return view
     }()
@@ -97,10 +80,14 @@ class BaseViewController: UIViewController {
     /// Layout activity indicator view.
     func layoutActivityIndicator() {
         self.view.addSubview(self.view_ActivityIndicatorContainer)
-        self.view_ActivityIndicatorContainer.snp.makeConstraints {
-            $0.centerY.leading.trailing.equalToSuperview()
-            $0.height.equalTo(50.0)
-        }
+        self.view_ActivityIndicatorContainer.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            self.view_ActivityIndicatorContainer.heightAnchor.constraint(equalToConstant: 50.0),
+            self.view_ActivityIndicatorContainer.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+            self.view_ActivityIndicatorContainer.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            self.view_ActivityIndicatorContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
+        ])
     }
         
     // MARK: Overrides
