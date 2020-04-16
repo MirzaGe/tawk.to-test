@@ -6,141 +6,98 @@
 //  Copyright © 2020 CitusLabs. All rights reserved.
 //
 
-import SnapKit
+import Foundation
 import UIKit
+import Combine
 
-/**
- Enum to determine the type of the current cell.
- */
-enum DataCellType {
-    /// The short is used for songs kind of cell, with square-ish artwork imageView.
-    case short
-    /// The long type is used for books and movies.
-    case long
-}
-
-/**
- The protocol of `DataTableViewCell`.
- This will contian the events from the views, such as GetButton.
- */
-protocol DataCellDelegate { }
-
-/**
- The `DataTableViewCell` is merely the common cell to be used in this project.
- A collection cell was put into consideration but it would take time.
- Collection cell to group songs and other `kind`s, much like the original Itunes Store app.
- 
- However though, it is being aimed that the artwork to be dynamic based on `kind`.
- 
- TODO: Add star rating view.
- */
 class DataTableViewCell: BaseTableViewCell {
-
+    
     // MARK: - Properties
     
-    private var constraint_ArtworkHeight: Constraint?
-    private var constraint_ArtworkWidth: Constraint?
-    private var constraint_ButtonWidth: Constraint?
-    
-    private lazy var imageView_Artwork: UIImageView = {
-        return UIImageView(image: UIImage(named: "ic_placeholder"))
-    }()
-    
-    private lazy var label_Title: UILabel = {
-        let label = UILabel()
-        label.textColor = .textColor
-        label.font = UIFont.systemFont(ofSize: 12.0, weight: .regular)
-        label.numberOfLines = 2
-        return label
-    }()
-    
-    private lazy var label_Subtitle: UILabel = {
-        let label = UILabel()
-        label.textColor = .textColor
-        label.font = UIFont.systemFont(ofSize: 12.0, weight: .regular)
-        label.alpha = 0.5
-        label.numberOfLines = 1
-        return label
-    }()
-    
-    private lazy var label_Date: UILabel = {
-        let label = UILabel()
-        label.textColor = .textColor
-        label.font = UIFont.systemFont(ofSize: 12.0, weight: .regular)
-        label.numberOfLines = 1
-        label.isHidden = true
-        return label
-    }()
-    
-    private lazy var stackView_Labels: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [
-            self.label_Title,
-            self.label_Subtitle,
-            self.label_Date
-        ])
-        stackView.axis = .vertical
-        return stackView
-    }()
-        
-    private lazy var imageView_DisclosureIcon: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "ic_chevron_right")?
-                .withTintColor(UIColor.textColor))
-        imageView.alpha = 0.5
-        return imageView
-    }()
-    
-    private var cellType: DataCellType!
+    private var title: UILabel!
+    private var subtitle: UILabel!
+    private var poster: UIImageView!
+    private var cancellable: AnyCancellable?
+    private var animator: UIViewPropertyAnimator?
     
     // MARK: - Functions
-    
-//    func setupCell(data: Result, type: DataCellType) {
-//        self.cellType = type
-//
-//        self.label_Date.isHidden = data.dateLabelIsHidden
-//        self.button_Get.isHidden = data.getButtonIsHidden
-//        self.imageView_DisclosureIcon.isHidden = !data.getButtonIsHidden
-//
-//        self.label_Title.text = data.titlePresentable
-//        self.label_Subtitle.text = data.subtitlePresentable
-//        self.label_Date.text = data.datePresentable
-//
-//        //let placeholder = KFCrossPlatformImage(named: "ic_placeholder")
-//
-//    }
-    
     // MARK: Overrides
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        self.selectionStyle = .default
-        
-        self.contentView.addSubviews(
-            self.imageView_Artwork,
-            self.imageView_DisclosureIcon,
-            self.stackView_Labels
-        )
-        
-        self.imageView_Artwork.snp.makeConstraints {
-            $0.top.bottom.equalToSuperview().inset(8.0)
-            $0.leading.equalToSuperview().inset(16.0)
-            self.constraint_ArtworkWidth = $0.width.equalTo(60.0).constraint
-            self.constraint_ArtworkHeight = $0.height.equalTo(90.0).priority(.high).constraint
-        }
-                    
-        self.stackView_Labels.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.leading.equalTo(self.imageView_Artwork.snp.trailing).offset(8.0)
-            //$0.trailing.equalTo(self.button_Get.snp.leading).offset(-8.0)
-        }
+        setupUI()
     }
     
-    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
-        super.setHighlighted(highlighted, animated: animated)
-        // self.setHighlightedAnimation()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
+    required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override public func prepareForReuse() {
+        super.prepareForReuse()
+        poster.image = nil
+        poster.alpha = 0.0
+        animator?.stopAnimation(true)
+        cancellable?.cancel()
+    }
+    
+//    func configure(with movie: Result) {
+//        title.text = movie.titlePresentable
+//        subtitle.text = movie.subtitlePresentable
+//        cancellable = loadImage(for: movie).sink { [unowned self] image in self.showImage(image: image) }
+//    }
+    
+    private func showImage(image: UIImage?) {
+        poster.alpha = 0.0
+        animator?.stopAnimation(false)
+        poster.image = image
+        animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.3, delay: 0, options: .curveLinear, animations: {
+            self.poster.alpha = 1.0
+        })
+    }
+    
+//    private func loadImage(for movie: Result) -> AnyPublisher<UIImage?, Never> {
+//        return ImageLoader.shared.loadImage(from: URL(string: movie.artworkResource.downloadURL.absoluteString)!)
+//    }
+    
+    private func setupUI() {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.distribution = .fill
+        stackView.spacing = 8
+        stackView.alignment = .leading
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(stackView)
+        NSLayoutConstraint.activate([
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
+        ])
+        
+        poster = UIImageView()
+        stackView.addArrangedSubview(poster)
+        NSLayoutConstraint.activate([
+            poster.widthAnchor.constraint(equalToConstant: 60),
+            poster.heightAnchor.constraint(equalToConstant: 100)
+        ])
+        
+        title = UILabel()
+        title.font = .boldSystemFont(ofSize: 14)
+        title.numberOfLines = 0
+        title.lineBreakMode = .byWordWrapping
+        
+        subtitle = UILabel()
+        subtitle.font = .systemFont(ofSize: 14)
+        subtitle.numberOfLines = 3
+        subtitle.lineBreakMode = .byTruncatingTail
+        
+        let textStackView = UIStackView()
+        textStackView.axis = .vertical
+        textStackView.distribution = .equalSpacing
+        textStackView.alignment = .leading
+        textStackView.spacing = 4
+        textStackView.addArrangedSubview(title)
+        textStackView.addArrangedSubview(subtitle)
+        stackView.addArrangedSubview(textStackView)
     }
 }

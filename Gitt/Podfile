@@ -9,9 +9,8 @@ def test_pods
 end
 
 target 'Gitt' do
-    pod 'RxSwift',                    '~> 5.0.1'              # Reactive/Functional Programming Framework
-    pod 'RxCocoa',                    '~> 5.0.1'              # Reactive/Functional Programming Framework
-    pod 'SnapKit',                    '~> 5.0.1'              # Constraint Programmatically.
+    pod 'RxSwift',  '~> 5.0.1' # Reactive/Functional Programming Framework
+    pod 'RxCocoa',  '~> 5.0.1' # Reactive/Functional Programming Framework
     
     target 'GittTests' do
         test_pods
