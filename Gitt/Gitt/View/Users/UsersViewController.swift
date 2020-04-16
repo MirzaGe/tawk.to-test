@@ -34,7 +34,7 @@ class UsersViewController: BaseViewController {
     private func setupUI() {
         weak var weakSelf = self
         
-        self.title = "Track List"
+        self.title = "Users"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         
         self.view.addSubview(self.tableView)
