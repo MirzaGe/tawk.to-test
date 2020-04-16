@@ -47,10 +47,12 @@ class UsersViewModel: BaseViewModel {
     
     /// Do searching... call `SearchService`.
     private func loadUsers(since: Int = 0) {
-        self.loaderIsHidden.accept(false)
-        self.tableViewIsHidden.accept(true)
+        if since == 0 {
+            self.loaderIsHidden.accept(false)
+            self.tableViewIsHidden.accept(true)
+        }
         
-        APIManager.GetUsers(parameters: ["since": 0]).execute { (result) in
+        APIManager.GetUsers(parameters: ["since": since]).execute { (result) in
             self.loaderIsHidden.accept(true)
             self.tableViewIsHidden.accept(false)
             
@@ -59,6 +61,8 @@ class UsersViewModel: BaseViewModel {
                 newUsers.forEach { (newUser) in
                     self.users.append(newUser)
                 }
+                
+                self.since = newUsers.last?.id ?? 0
                 self.delegate?.reloadData()
                 
             case let .failure(error):
@@ -88,7 +92,6 @@ class UsersViewModel: BaseViewModel {
 extension UsersViewModel: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
     }
 }
 
@@ -112,5 +115,24 @@ extension UsersViewModel: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.users.count
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let lastItem = self.users.count - 1
+        if indexPath.row == lastItem {
+            
+            print("Loading new sets of users....... ✅ self.since: \(self.since)")
+            
+            let spinner = UIActivityIndicatorView(style: .medium)
+            spinner.startAnimating()
+            spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: tableView.bounds.width, height: CGFloat(44))
+            tableView.tableFooterView = spinner
+            
+            self.loadUsers(since: self.since)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
+                tableView.tableFooterView = nil
+            }
+        }
     }
 }
