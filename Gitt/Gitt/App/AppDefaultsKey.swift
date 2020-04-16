@@ -9,5 +9,5 @@
 import Foundation
 
 enum AppDefaultsKey: CodingKey {
-    
+    case someKey
 }

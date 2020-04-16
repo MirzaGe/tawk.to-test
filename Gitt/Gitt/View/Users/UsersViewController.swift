@@ -17,7 +17,7 @@ class UsersViewController: BaseViewController {
     
     // MARK: - Properties
     
-    private var viewModel: SearchMasterViewModel!
+    private var viewModel: UsersViewModel!
     private let disposeBag = DisposeBag()
     
     // MARK: - Functions
@@ -74,7 +74,7 @@ class UsersViewController: BaseViewController {
     override func loadView() {
         super.loadView()
         
-        self.viewModel = SearchMasterViewModel(searchMasterController: self)
+        self.viewModel = UsersViewModel(usersController: self)
         self.setupUI()
         self.setupBindings()
     }
@@ -87,9 +87,9 @@ class UsersViewController: BaseViewController {
     }
 }
 
-// MARK: - SearchMasterDelegate
+// MARK: - UsersDelegate
 
-extension UsersViewController: SearchMasterDelegate {
+extension UsersViewController: UsersDelegate {
 //    func showDetail(with result: Result) {
 //        // TODO: Use coordinator or router.
 //        let searchDetailController = SearchDetailViewController(selectedResult: result)

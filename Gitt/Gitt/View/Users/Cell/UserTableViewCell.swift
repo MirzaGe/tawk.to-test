@@ -14,8 +14,8 @@ class UserTableViewCell: BaseTableViewCell {
     
     // MARK: - Properties
     
-    private var title: UILabel!
-    private var subtitle: UILabel!
+    private var username: UILabel!
+    private var details: UILabel!
     private var poster: UIImageView!
     private var cancellable: AnyCancellable?
     private var animator: UIViewPropertyAnimator?
@@ -40,11 +40,11 @@ class UserTableViewCell: BaseTableViewCell {
         cancellable?.cancel()
     }
     
-//    func configure(with movie: Result) {
-//        title.text = movie.titlePresentable
-//        subtitle.text = movie.subtitlePresentable
-//        cancellable = loadImage(for: movie).sink { [unowned self] image in self.showImage(image: image) }
-//    }
+    func configure(with user: User) {
+        self.username.text = user.login ?? "No username"
+        self.details.text = "userId: \(user.id ?? 0)"
+        self.cancellable = self.loadImage(for: user).sink { [unowned self] image in self.showImage(image: image) }
+    }
     
     private func showImage(image: UIImage?) {
         poster.alpha = 0.0
@@ -55,16 +55,16 @@ class UserTableViewCell: BaseTableViewCell {
         })
     }
     
-//    private func loadImage(for movie: Result) -> AnyPublisher<UIImage?, Never> {
-//        return ImageLoader.shared.loadImage(from: URL(string: movie.artworkResource.downloadURL.absoluteString)!)
-//    }
+    private func loadImage(for user: User) -> AnyPublisher<UIImage?, Never> {
+        return ImageLoader.shared.loadImage(from: URL(string: user.avatarUrl ?? "")!)
+    }
     
     private func setupUI() {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.distribution = .fill
         stackView.spacing = 8
-        stackView.alignment = .leading
+        stackView.alignment = .center
         stackView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(stackView)
         NSLayoutConstraint.activate([
@@ -74,30 +74,30 @@ class UserTableViewCell: BaseTableViewCell {
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
         ])
         
-        poster = UIImageView()
-        stackView.addArrangedSubview(poster)
+        self.poster = UIImageView()
+        stackView.addArrangedSubview(self.poster)
         NSLayoutConstraint.activate([
-            poster.widthAnchor.constraint(equalToConstant: 60),
-            poster.heightAnchor.constraint(equalToConstant: 100)
+            self.poster.widthAnchor.constraint(equalToConstant: 60.0),
+            self.poster.heightAnchor.constraint(equalToConstant: 60.0)
         ])
         
-        title = UILabel()
-        title.font = .boldSystemFont(ofSize: 14)
-        title.numberOfLines = 0
-        title.lineBreakMode = .byWordWrapping
+        self.username = UILabel()
+        self.username.font = .boldSystemFont(ofSize: 14)
+        self.username.numberOfLines = 0
+        self.username.lineBreakMode = .byWordWrapping
         
-        subtitle = UILabel()
-        subtitle.font = .systemFont(ofSize: 14)
-        subtitle.numberOfLines = 3
-        subtitle.lineBreakMode = .byTruncatingTail
+        self.details = UILabel()
+        self.details.font = .systemFont(ofSize: 14)
+        self.details.numberOfLines = 3
+        self.details.lineBreakMode = .byTruncatingTail
         
         let textStackView = UIStackView()
         textStackView.axis = .vertical
         textStackView.distribution = .equalSpacing
         textStackView.alignment = .leading
         textStackView.spacing = 4
-        textStackView.addArrangedSubview(title)
-        textStackView.addArrangedSubview(subtitle)
+        textStackView.addArrangedSubview(self.username)
+        textStackView.addArrangedSubview(self.details)
         stackView.addArrangedSubview(textStackView)
     }
 }
