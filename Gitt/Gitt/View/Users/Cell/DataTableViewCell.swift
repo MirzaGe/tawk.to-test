@@ -1,6 +1,6 @@
 //
 //  DataTableViewCell.swift
-//  iSearch
+//  Gitt
 //
 //  Created by Glenn Von Posadas on 4/10/20.
 //  Copyright © 2020 CitusLabs. All rights reserved.
@@ -81,11 +81,7 @@ class DataTableViewCell: BaseTableViewCell {
         stackView.axis = .vertical
         return stackView
     }()
-    
-    private lazy var button_Get: GetButton = {
-        return GetButton(type: .custom)
-    }()
-    
+        
     private lazy var imageView_DisclosureIcon: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "ic_chevron_right")?
                 .withTintColor(UIColor.textColor))
@@ -97,20 +93,20 @@ class DataTableViewCell: BaseTableViewCell {
     
     // MARK: - Functions
     
-    func setupCell(data: Result, type: DataCellType) {
-        self.cellType = type
-        
-        self.label_Date.isHidden = data.dateLabelIsHidden
-        self.button_Get.isHidden = data.getButtonIsHidden
-        self.imageView_DisclosureIcon.isHidden = !data.getButtonIsHidden
-        
-        self.label_Title.text = data.titlePresentable
-        self.label_Subtitle.text = data.subtitlePresentable
-        self.label_Date.text = data.datePresentable
-        
-        let placeholder = KFCrossPlatformImage(named: "ic_placeholder")
-
-    }
+//    func setupCell(data: Result, type: DataCellType) {
+//        self.cellType = type
+//
+//        self.label_Date.isHidden = data.dateLabelIsHidden
+//        self.button_Get.isHidden = data.getButtonIsHidden
+//        self.imageView_DisclosureIcon.isHidden = !data.getButtonIsHidden
+//
+//        self.label_Title.text = data.titlePresentable
+//        self.label_Subtitle.text = data.subtitlePresentable
+//        self.label_Date.text = data.datePresentable
+//
+//        //let placeholder = KFCrossPlatformImage(named: "ic_placeholder")
+//
+//    }
     
     // MARK: Overrides
 
@@ -121,7 +117,6 @@ class DataTableViewCell: BaseTableViewCell {
         
         self.contentView.addSubviews(
             self.imageView_Artwork,
-            self.button_Get,
             self.imageView_DisclosureIcon,
             self.stackView_Labels
         )
@@ -132,24 +127,11 @@ class DataTableViewCell: BaseTableViewCell {
             self.constraint_ArtworkWidth = $0.width.equalTo(60.0).constraint
             self.constraint_ArtworkHeight = $0.height.equalTo(90.0).priority(.high).constraint
         }
-        
-        self.button_Get.snp.makeConstraints {
-            $0.height.equalTo(30.0)
-            $0.centerY.equalToSuperview()
-            $0.trailing.equalToSuperview().inset(16.0)
-            self.constraint_ButtonWidth = $0.width.equalTo(60.0).constraint
-        }
-            
-        self.imageView_DisclosureIcon.snp.makeConstraints {
-            $0.width.equalTo(15.0)
-            $0.height.equalTo(15.0)
-            $0.trailing.centerY.equalTo(self.button_Get)
-        }
-        
+                    
         self.stackView_Labels.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.leading.equalTo(self.imageView_Artwork.snp.trailing).offset(8.0)
-            $0.trailing.equalTo(self.button_Get.snp.leading).offset(-8.0)
+            //$0.trailing.equalTo(self.button_Get.snp.leading).offset(-8.0)
         }
     }
     

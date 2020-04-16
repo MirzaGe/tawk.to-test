@@ -1,15 +1,15 @@
 //
-//  SearchMasterViewModelTests.swift
-//  iSearchTests
+//  UsersViewModelTests.swift
+//  GittTests
 //
-//  Created by Glenn Von Posadas on 4/11/20.
+//  Created by Glenn Von Posadas on 4/16/20.
 //  Copyright © 2020 CitusLabs. All rights reserved.
 //
 
 import XCTest
-@testable import iSearch
+@testable import Gitt
 
-class SearchMasterViewModelTests: BaseUnitTests {
+class UsersViewModelTests: BaseUnitTests {
     func testMockDelegate() {
         XCTAssert(self.mockSearchMasterDelegate.reloadDataWasCalled == true, "After viewModel init, the reload data must be called.")
     }

@@ -1,6 +1,6 @@
 //
-//  UIColor+iSearch.swift
-//  iSearch
+//  UIColor+Gitt.swift
+//  Gitt
 //
 //  Created by Glenn Von Posadas on 4/9/20.
 //  Copyright © 2020 CitusLabs. All rights reserved.
@@ -10,7 +10,7 @@ import UIKit
 
 extension UIColor {
     /// Color mainly used for error internet notifier
-    static let iSearchErrorRed: UIColor = UIColor.colorWithRGBHex(0xff3f34)
+    static let GittErrorRed: UIColor = UIColor.colorWithRGBHex(0xff3f34)
     /// Color used for texts to support dark mode, such as large title
     static let textColor: UIColor = UIColor(named: "TextColor")!
     /// Color used for background of views.

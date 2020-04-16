@@ -1,6 +1,6 @@
 //
 //  SearchMasterViewModel.swift
-//  iSearch
+//  Gitt
 //
 //  Created by Glenn Von Posadas on 4/10/20.
 //  Copyright © 2020 CitusLabs. All rights reserved.
@@ -14,11 +14,11 @@ import RxSwift
  Protocol of `SearchMasterViewModel`.
  */
 protocol SearchMasterDelegate: BaseViewModelDelegate {
-    func showDetail(with result: Result)
+    // func showDetail(with result: Result)
 }
 
 /**
- The viewmodel that the `SearchMasterViewController` owns.
+ The viewmodel that the `UsersViewController` owns.
  */
 class SearchMasterViewModel: BaseViewModel {
     
@@ -28,7 +28,7 @@ class SearchMasterViewModel: BaseViewModel {
     private var searchTerm = "star"
     private weak var delegate: SearchMasterDelegate?
     
-    var searchResult: SearchResult?
+    // var searchResult: SearchResult?
     
     // MARK: Visibilities
     
@@ -49,26 +49,26 @@ class SearchMasterViewModel: BaseViewModel {
         self.loaderIsHidden.accept(false)
         self.tableViewIsHidden.accept(true)
         
-        searchProvider.request(.search(term: term, country: country, media: media)) { (result) in
-            self.loaderIsHidden.accept(true)
-            self.tableViewIsHidden.accept(false)
-            
-            switch result {
-            case let .success(response):
-                if response.statusCode == 200,
-                    let searchResult = try? JSONDecoder().decode(SearchResult.self, from: response.data) {
-                    self.searchResult = searchResult
-                    self.delegate?.reloadData()
-                    return
-                }
-                
-                // TODO: handle error further...
-                self.showError("Data error")
-                
-            case let .failure(error):
-                self.showError(error.localizedDescription)
-            }
-        }
+//        searchProvider.request(.search(term: term, country: country, media: media)) { (result) in
+//            self.loaderIsHidden.accept(true)
+//            self.tableViewIsHidden.accept(false)
+//
+//            switch result {
+//            case let .success(response):
+//                if response.statusCode == 200,
+//                    let searchResult = try? JSONDecoder().decode(SearchResult.self, from: response.data) {
+//                    self.searchResult = searchResult
+//                    self.delegate?.reloadData()
+//                    return
+//                }
+//
+//                // TODO: handle error further...
+//                self.showError("Data error")
+//
+//            case let .failure(error):
+//                self.showError(error.localizedDescription)
+//            }
+//        }
     }
     
     // MARK: Overrides
@@ -82,10 +82,7 @@ class SearchMasterViewModel: BaseViewModel {
     
     /// A controller lifecycle method
     func viewDidLoad() {
-        if let storedResult = AppDefaults.getObjectWithKey(.lastViewedResult, type: Result.self) {
-            self.delegate?.showDetail(with: storedResult)
-            AppDefaults.removeDefaultsWithKey(.lastViewedResult)
-        }
+
     }
 }
 
@@ -94,14 +91,7 @@ class SearchMasterViewModel: BaseViewModel {
 extension SearchMasterViewModel: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        if let results = self.searchResult?.results {
-            let data = results[indexPath.row]
-            // Store result to defaults for last viewing.
-            AppDefaults.store(data, key: .lastViewedResult)
-            // Show the detail screen
-            self.delegate?.showDetail(with: data)
-        }
+
     }
 }
 
@@ -117,16 +107,17 @@ extension SearchMasterViewModel: UITableViewDataSource {
             cell = DataTableViewCell()
         }
         
-        if let results = self.searchResult?.results {
-            let data = results[indexPath.row]
-            let type = data.cellType
-            cell?.setupCell(data: data, type: type)
-        }
+//        if let results = self.searchResult?.results {
+//            let data = results[indexPath.row]
+//            let type = data.cellType
+//            cell?.setupCell(data: data, type: type)
+//        }
         
         return cell!
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.searchResult?.resultCount ?? 0
+//        return self.searchResult?.resultCount ?? 0
+        return 0
     }
 }

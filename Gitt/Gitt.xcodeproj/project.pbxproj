@@ -8,10 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		298DEDD1C49D730F8B3B1DE3 /* Pods_Gitt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93B6B890F20098235A75C612 /* Pods_Gitt.framework */; };
-		401745E12440FD780055B0BD /* SearchDetailUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401745E02440FD780055B0BD /* SearchDetailUITests.swift */; };
+		401745E12440FD780055B0BD /* UserViewerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401745E02440FD780055B0BD /* UserViewerUITests.swift */; };
 		401745E32441016A0055B0BD /* MockSearchMasterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401745E22441016A0055B0BD /* MockSearchMasterDelegate.swift */; };
 		401745E52441053F0055B0BD /* BaseUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401745E42441053F0055B0BD /* BaseUnitTests.swift */; };
-		401745E7244105C30055B0BD /* SearchMasterViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401745E6244105C30055B0BD /* SearchMasterViewModelTests.swift */; };
 		401745EA244106A70055B0BD /* MockSearchDetailDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401745E9244106A70055B0BD /* MockSearchDetailDelegate.swift */; };
 		401745EC24410ADF0055B0BD /* SearchDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401745EB24410ADF0055B0BD /* SearchDetailViewModelTests.swift */; };
 		402F5A6B24482C67003FC6D2 /* Gitt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 402F5A6924482C67003FC6D2 /* Gitt.xcdatamodeld */; };
@@ -20,6 +19,7 @@
 		4064E827243E61BE00DE7384 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4064E826243E61BE00DE7384 /* SceneDelegate.swift */; };
 		4064E831243E61C100DE7384 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4064E830243E61C100DE7384 /* Assets.xcassets */; };
 		4064E834243E61C100DE7384 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4064E832243E61C100DE7384 /* LaunchScreen.storyboard */; };
+		408A410B24484841004A6BD5 /* UsersViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408A410A24484841004A6BD5 /* UsersViewModelTests.swift */; };
 		40C23479243F77BF00A5A462 /* AppEnv.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C23478243F77BF00A5A462 /* AppEnv.swift */; };
 		40C23480243F997700A5A462 /* SearchMasterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C2347F243F997700A5A462 /* SearchMasterViewModel.swift */; };
 		40C23485243FA56600A5A462 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C23484243FA56600A5A462 /* BaseTableViewCell.swift */; };
@@ -35,10 +35,9 @@
 		40C234A72440E12900A5A462 /* BaseUITestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C234A62440E12900A5A462 /* BaseUITestCase.swift */; };
 		40C234AA2440E19600A5A462 /* XCUIApplication+iSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C234A92440E19600A5A462 /* XCUIApplication+iSearch.swift */; };
 		40C234AC2440E1AE00A5A462 /* XCTestCase+iSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C234AB2440E1AE00A5A462 /* XCTestCase+iSearch.swift */; };
-		40C234AE2440E4BF00A5A462 /* SearchMasterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C234AD2440E4BF00A5A462 /* SearchMasterUITests.swift */; };
+		40C234AE2440E4BF00A5A462 /* UsersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C234AD2440E4BF00A5A462 /* UsersUITests.swift */; };
 		40C859FE243F24C400D9B5BE /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C859FD243F24C400D9B5BE /* BaseViewController.swift */; };
-		40C85A00243F24E100D9B5BE /* SearchMasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C859FF243F24E100D9B5BE /* SearchMasterViewController.swift */; };
-		40C85A0A243F3C6500D9B5BE /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C85A09243F3C6500D9B5BE /* BaseTabBarController.swift */; };
+		40C85A00243F24E100D9B5BE /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C859FF243F24E100D9B5BE /* UsersViewController.swift */; };
 		40C85A0C243F532D00D9B5BE /* UIColor+iSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C85A0B243F532D00D9B5BE /* UIColor+iSearch.swift */; };
 		40C85A0E243F53E800D9B5BE /* UIView+iSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C85A0D243F53E800D9B5BE /* UIView+iSearch.swift */; };
 		40C85A10243F572300D9B5BE /* UIViewController+iSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C85A0F243F572300D9B5BE /* UIViewController+iSearch.swift */; };
@@ -69,10 +68,9 @@
 		2C18CAF9391836986724569D /* Pods-iSearch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iSearch.release.xcconfig"; path = "Target Support Files/Pods-iSearch/Pods-iSearch.release.xcconfig"; sourceTree = "<group>"; };
 		2EE702BA7F2A0ED70757630C /* Pods-Gitt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gitt.debug.xcconfig"; path = "Target Support Files/Pods-Gitt/Pods-Gitt.debug.xcconfig"; sourceTree = "<group>"; };
 		3860621DBEA8FF4328F7D401 /* Pods-iSearchTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iSearchTests.release.xcconfig"; path = "Target Support Files/Pods-iSearchTests/Pods-iSearchTests.release.xcconfig"; sourceTree = "<group>"; };
-		401745E02440FD780055B0BD /* SearchDetailUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailUITests.swift; sourceTree = "<group>"; };
+		401745E02440FD780055B0BD /* UserViewerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewerUITests.swift; sourceTree = "<group>"; };
 		401745E22441016A0055B0BD /* MockSearchMasterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSearchMasterDelegate.swift; sourceTree = "<group>"; };
 		401745E42441053F0055B0BD /* BaseUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUnitTests.swift; sourceTree = "<group>"; };
-		401745E6244105C30055B0BD /* SearchMasterViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMasterViewModelTests.swift; sourceTree = "<group>"; };
 		401745E9244106A70055B0BD /* MockSearchDetailDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSearchDetailDelegate.swift; sourceTree = "<group>"; };
 		401745EB24410ADF0055B0BD /* SearchDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailViewModelTests.swift; sourceTree = "<group>"; };
 		402F5A6A24482C67003FC6D2 /* Gitt.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Gitt.xcdatamodel; sourceTree = "<group>"; };
@@ -87,6 +85,7 @@
 		4064E840243E61C100DE7384 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4064E845243E61C100DE7384 /* GittUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GittUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4064E84B243E61C100DE7384 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		408A410A24484841004A6BD5 /* UsersViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModelTests.swift; sourceTree = "<group>"; };
 		40C23478243F77BF00A5A462 /* AppEnv.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnv.swift; sourceTree = "<group>"; };
 		40C2347F243F997700A5A462 /* SearchMasterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMasterViewModel.swift; sourceTree = "<group>"; };
 		40C23484243FA56600A5A462 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
@@ -96,18 +95,15 @@
 		40C2348E2440582000A5A462 /* BaseTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableView.swift; sourceTree = "<group>"; };
 		40C2349024405D0900A5A462 /* UIButton+iSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+iSearch.swift"; sourceTree = "<group>"; };
 		40C2349224405D4B00A5A462 /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
-		40C2349824406D1100A5A462 /* iSearchTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSearchTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		40C2349924406D1200A5A462 /* ResultHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultHelperTests.swift; sourceTree = "<group>"; };
 		40C234A12440A4EE00A5A462 /* AppDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDefaults.swift; sourceTree = "<group>"; };
 		40C234A32440A52F00A5A462 /* AppDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDefaultsKey.swift; sourceTree = "<group>"; };
-		40C234A52440E12900A5A462 /* iSearchUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSearchUITests-Bridging-Header.h"; sourceTree = "<group>"; };
 		40C234A62440E12900A5A462 /* BaseUITestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUITestCase.swift; sourceTree = "<group>"; };
 		40C234A92440E19600A5A462 /* XCUIApplication+iSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIApplication+iSearch.swift"; sourceTree = "<group>"; };
 		40C234AB2440E1AE00A5A462 /* XCTestCase+iSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+iSearch.swift"; sourceTree = "<group>"; };
-		40C234AD2440E4BF00A5A462 /* SearchMasterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMasterUITests.swift; sourceTree = "<group>"; };
+		40C234AD2440E4BF00A5A462 /* UsersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersUITests.swift; sourceTree = "<group>"; };
 		40C859FD243F24C400D9B5BE /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		40C859FF243F24E100D9B5BE /* SearchMasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMasterViewController.swift; sourceTree = "<group>"; };
-		40C85A09243F3C6500D9B5BE /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
+		40C859FF243F24E100D9B5BE /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
 		40C85A0B243F532D00D9B5BE /* UIColor+iSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+iSearch.swift"; sourceTree = "<group>"; };
 		40C85A0D243F53E800D9B5BE /* UIView+iSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+iSearch.swift"; sourceTree = "<group>"; };
 		40C85A0F243F572300D9B5BE /* UIViewController+iSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+iSearch.swift"; sourceTree = "<group>"; };
@@ -214,10 +210,9 @@
 				401745E8244106950055B0BD /* Mocks */,
 				401745E42441053F0055B0BD /* BaseUnitTests.swift */,
 				40C2349924406D1200A5A462 /* ResultHelperTests.swift */,
-				401745E6244105C30055B0BD /* SearchMasterViewModelTests.swift */,
 				401745EB24410ADF0055B0BD /* SearchDetailViewModelTests.swift */,
 				4064E840243E61C100DE7384 /* Info.plist */,
-				40C2349824406D1100A5A462 /* iSearchTests-Bridging-Header.h */,
+				408A410A24484841004A6BD5 /* UsersViewModelTests.swift */,
 			);
 			path = GittTests;
 			sourceTree = "<group>";
@@ -227,10 +222,9 @@
 			children = (
 				40C234A82440E16900A5A462 /* Utilities */,
 				40C234A62440E12900A5A462 /* BaseUITestCase.swift */,
-				40C234AD2440E4BF00A5A462 /* SearchMasterUITests.swift */,
-				401745E02440FD780055B0BD /* SearchDetailUITests.swift */,
+				40C234AD2440E4BF00A5A462 /* UsersUITests.swift */,
+				401745E02440FD780055B0BD /* UserViewerUITests.swift */,
 				4064E84B243E61C100DE7384 /* Info.plist */,
-				40C234A52440E12900A5A462 /* iSearchUITests-Bridging-Header.h */,
 			);
 			path = GittUITests;
 			sourceTree = "<group>";
@@ -366,7 +360,7 @@
 			children = (
 				40C23483243FA38F00A5A462 /* Cell */,
 				40C2347E243F986000A5A462 /* ViewModel */,
-				40C859FF243F24E100D9B5BE /* SearchMasterViewController.swift */,
+				40C859FF243F24E100D9B5BE /* UsersViewController.swift */,
 			);
 			path = Users;
 			sourceTree = "<group>";
@@ -394,7 +388,6 @@
 				40C2349224405D4B00A5A462 /* BaseButton.swift */,
 				40C2348E2440582000A5A462 /* BaseTableView.swift */,
 				40C859FD243F24C400D9B5BE /* BaseViewController.swift */,
-				40C85A09243F3C6500D9B5BE /* BaseTabBarController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -613,7 +606,6 @@
 				40C2348F2440582000A5A462 /* BaseTableView.swift in Sources */,
 				40C85A10243F572300D9B5BE /* UIViewController+iSearch.swift in Sources */,
 				40C85A0E243F53E800D9B5BE /* UIView+iSearch.swift in Sources */,
-				40C85A0A243F3C6500D9B5BE /* BaseTabBarController.swift in Sources */,
 				40C23479243F77BF00A5A462 /* AppEnv.swift in Sources */,
 				40C23487243FA5E100A5A462 /* DataTableViewCell.swift in Sources */,
 				40C234A42440A52F00A5A462 /* AppDefaultsKey.swift in Sources */,
@@ -624,7 +616,7 @@
 				4064E827243E61BE00DE7384 /* SceneDelegate.swift in Sources */,
 				40C23480243F997700A5A462 /* SearchMasterViewModel.swift in Sources */,
 				40C2349324405D4B00A5A462 /* BaseButton.swift in Sources */,
-				40C85A00243F24E100D9B5BE /* SearchMasterViewController.swift in Sources */,
+				40C85A00243F24E100D9B5BE /* UsersViewController.swift in Sources */,
 				40C23485243FA56600A5A462 /* BaseTableViewCell.swift in Sources */,
 				40C2348D24404A5300A5A462 /* AppConfig.swift in Sources */,
 				40C2349124405D0900A5A462 /* UIButton+iSearch.swift in Sources */,
@@ -638,7 +630,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				401745EC24410ADF0055B0BD /* SearchDetailViewModelTests.swift in Sources */,
-				401745E7244105C30055B0BD /* SearchMasterViewModelTests.swift in Sources */,
+				408A410B24484841004A6BD5 /* UsersViewModelTests.swift in Sources */,
 				401745E32441016A0055B0BD /* MockSearchMasterDelegate.swift in Sources */,
 				401745EA244106A70055B0BD /* MockSearchDetailDelegate.swift in Sources */,
 				401745E52441053F0055B0BD /* BaseUnitTests.swift in Sources */,
@@ -651,10 +643,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				40C234A72440E12900A5A462 /* BaseUITestCase.swift in Sources */,
-				401745E12440FD780055B0BD /* SearchDetailUITests.swift in Sources */,
+				401745E12440FD780055B0BD /* UserViewerUITests.swift in Sources */,
 				40C234AA2440E19600A5A462 /* XCUIApplication+iSearch.swift in Sources */,
 				40C234AC2440E1AE00A5A462 /* XCTestCase+iSearch.swift in Sources */,
-				40C234AE2440E4BF00A5A462 /* SearchMasterUITests.swift in Sources */,
+				40C234AE2440E4BF00A5A462 /* UsersUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

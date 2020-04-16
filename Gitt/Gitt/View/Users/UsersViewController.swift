@@ -1,6 +1,6 @@
 //
-//  SearchMasterViewController.swift
-//  iSearch
+//  UsersViewController.swift
+//  Gitt
 //
 //  Created by Glenn Von Posadas on 4/9/20.
 //  Copyright © 2020 CitusLabs. All rights reserved.
@@ -11,9 +11,9 @@ import RxSwift
 import UIKit
 
 /**
- The controller for the Search master screen.
+ The controller for listing of users.
  */
-class SearchMasterViewController: BaseViewController {
+class UsersViewController: BaseViewController {
     
     // MARK: - Properties
     
@@ -85,13 +85,13 @@ class SearchMasterViewController: BaseViewController {
 
 // MARK: - SearchMasterDelegate
 
-extension SearchMasterViewController: SearchMasterDelegate {
-    func showDetail(with result: Result) {
-        // TODO: Use coordinator or router.
-        let searchDetailController = SearchDetailViewController(selectedResult: result)
-        let detailNavCon = UINavigationController(rootViewController: searchDetailController)
-        self.splitViewController?.showDetailViewController(detailNavCon, sender: nil)
-    }
+extension UsersViewController: SearchMasterDelegate {
+//    func showDetail(with result: Result) {
+//        // TODO: Use coordinator or router.
+//        let searchDetailController = SearchDetailViewController(selectedResult: result)
+//        let detailNavCon = UINavigationController(rootViewController: searchDetailController)
+//        self.splitViewController?.showDetailViewController(detailNavCon, sender: nil)
+//    }
     
     func reloadData() {
         self.tableView.reloadData()
