@@ -18,6 +18,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.removePersistentDomain(forName: defaultsName)
         }
         
+        // Test: -
+        APIManager.GetUsers(parameters: ["since": 0]).execute { (result) in
+            switch result {
+            case let .success(users):
+                print("USERS: \(users)")
+            case let .failure(error):
+                print("ERROR: \(error.localizedDescription)")
+            }
+        }
+        
         return true
     }
 

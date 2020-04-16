@@ -8,37 +8,33 @@
 
 import Foundation
 
+public typealias ResultCallback<T> = (Result<T, Error>) -> Void
+
 protocol RequestType {
     associatedtype ResponseType: Codable
     var data: RequestData { get }
 }
 
 extension RequestType {
-    func execute (
+    func execute(
         dispatcher: NetworkDispatcher = URLSessionNetworkDispatcher.instance,
-        onSuccess: ((ResponseType) -> Void)? = nil,
-        onSuccessRawData: ((Data) -> Void)? = nil,
-        onError: @escaping (Error) -> Void) {
+        completion: @escaping ResultCallback<ResponseType>) {
         dispatcher.dispatch(request: self.data, onSuccess: { (responseData: Data) in
             do {
                 let jsonDecoder = JSONDecoder()
                 let result = try jsonDecoder.decode(ResponseType.self, from: responseData)
                 
                 DispatchQueue.main.async {
-                    onSuccess?(result)
+                    completion(.success(result))
                 }
             } catch let error {
                 DispatchQueue.main.async {
-                    if self is APIManager.GetFile {
-                        onSuccessRawData?(responseData)
-                        return
-                    }
-                    onError(error)
+                    completion(.failure(error))
                 }
             }
         }, onError: { (error: Error) in
             DispatchQueue.main.async {
-                onError(error)
+                completion(.failure(error))
             }
         })
     }
