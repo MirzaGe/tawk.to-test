@@ -14,7 +14,7 @@ import UIKit
  The controller for profile screen.
  */
 class ProfileViewController: BaseViewController {
-
+    
     // MARK: - Properties
     
     @IBOutlet weak var imageView_BG: UIImageView!
@@ -43,13 +43,37 @@ class ProfileViewController: BaseViewController {
         
         self.viewModel = ProfileViewModel(profileController: self, user: self.user)
         
+        self.viewModel.followersPresentable
+            .bind(to: self.label_Followers.rx.text)
+            .disposed(by: self.disposeBag)
+        
+        self.viewModel.followingPresentable
+            .bind(to: self.label_Following.rx.text)
+            .disposed(by: self.disposeBag)
+        
+        self.viewModel.namePresentable
+            .bind(to: self.label_Name.rx.text)
+            .disposed(by: self.disposeBag)
+        
+        self.viewModel.companyPresentable
+            .bind(to: self.label_Company.rx.text)
+            .disposed(by: self.disposeBag)
+        
+        self.viewModel.blogPresentable
+            .bind(to: self.label_Blog.rx.text)
+            .disposed(by: self.disposeBag)
+        
+        self.viewModel.notesPresentable
+            .bind(to: self.textView_Notes.rx.text)
+            .disposed(by: self.disposeBag)
+        
         self.viewModel.startShimmer
             .subscribe(onNext: { startShimmer in
                 weakSelf?.view_ShimmerContainer.isHidden = !startShimmer
                 if startShimmer {
                     weakSelf?.view_Shimmers.forEach({ $0.shimmer() })
                 }
-        }).disposed(by: self.disposeBag)
+            }).disposed(by: self.disposeBag)
     }
     
     private func setupUI() {
@@ -73,7 +97,7 @@ class ProfileViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.setupUI()
         self.setupBindings()
     }

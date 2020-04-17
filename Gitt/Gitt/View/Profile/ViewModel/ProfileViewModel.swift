@@ -31,23 +31,30 @@ class ProfileViewModel: BaseViewModel {
     /// Determines the state of shimmer
     var startShimmer = BehaviorRelay<Bool>(value: true)
     var imageUrl = BehaviorRelay<URL?>(value: nil)
-    
-//    @IBOutlet weak var imageView_BG: UIImageView!
-//    @IBOutlet weak var imageView_Banner: UIImageView!
-//    
-////    @IBOutlet weak var label_Followers: UILabel!
-////    @IBOutlet weak var label_Following: UILabel!
-////    @IBOutlet weak var label_Name: UILabel!
-////    @IBOutlet weak var label_Company: UILabel!
-////    @IBOutlet weak var label_Blog: UILabel!
-////    @IBOutlet weak var textView_Notes: UITextView!
-////    @IBOutlet weak var button_Save: UIButton!
+
+    var followersPresentable = BehaviorRelay<String>(value: "")
+    var followingPresentable = BehaviorRelay<String>(value: "")
+    var namePresentable = BehaviorRelay<String>(value: "")
+    var companyPresentable = BehaviorRelay<String>(value: "")
+    var blogPresentable = BehaviorRelay<String>(value: "")
+    var notesPresentable = BehaviorRelay<String>(value: "")
     
     // MARK: - Functions
         
     /// Call API to get more user data
     /// Put the data to the behavior relays.
     private func loadData() {
+        guard let userId = self.user.id else {
+            self.delegate?.closeProfile()
+            return
+        }
+        
+        //APIManager.GetUsers
+    }
+    
+    // MARK: Events
+    
+    func save() {
         
     }
     
