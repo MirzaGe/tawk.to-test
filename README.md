@@ -9,7 +9,7 @@
 ---
 
 
-Dark Mode                  |  Light Mode + Cache.
+Dark Mode                  |  Light Mode.
 :-------------------------:|:-------------------------:
 ![Dark Mode](https://media.giphy.com/media/Kxi7nVisCSGX6uw9m5/giphy.gif)  | ![Light Mode](https://media.giphy.com/media/lRjy0syqLX5OunG9nD/giphy.gif)
 
