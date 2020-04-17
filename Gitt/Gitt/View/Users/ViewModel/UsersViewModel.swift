@@ -14,7 +14,7 @@ import RxSwift
  Protocol of `UsersViewModel`.
  */
 protocol UsersDelegate: BaseViewModelDelegate {
-     func showProfile(for user: User)
+    func showProfile(for user: User)
 }
 
 /**
@@ -29,6 +29,9 @@ class UsersViewModel: BaseViewModel {
     private weak var delegate: UsersDelegate?
     
     var users = [User]()
+    
+    private var filteredUsers = [User]()
+    private var filtering: Bool = false
     
     // MARK: Visibilities
     
@@ -101,8 +104,17 @@ extension UsersViewModel: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let user = self.users[indexPath.row]
-        self.delegate?.showProfile(for: user)
+        if self.filtering {
+            if self.filteredUsers.count > indexPath.row {
+                let user = self.filteredUsers[indexPath.row]
+                self.delegate?.showProfile(for: user)
+            }
+        } else {
+            if self.users.count > indexPath.row {
+                let user = self.users[indexPath.row]
+                self.delegate?.showProfile(for: user)
+            }
+        }
     }
 }
 
@@ -118,16 +130,23 @@ extension UsersViewModel: UITableViewDataSource {
             cell = UserTableViewCell()
         }
         
-        if self.users.count > indexPath.row {
-            let user = self.users[indexPath.row]
-            cell?.configure(with: user)
+        if self.filtering {
+            if self.filteredUsers.count > indexPath.row {
+                let user = self.filteredUsers[indexPath.row]
+                cell?.configure(with: user)
+            }
+        } else {
+            if self.users.count > indexPath.row {
+                let user = self.users[indexPath.row]
+                cell?.configure(with: user)
+            }
         }
         
         return cell!
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.users.count
+        return self.filtering ? self.filteredUsers.count : self.users.count
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -155,8 +174,17 @@ extension UsersViewModel: UITableViewDataSource {
 extension UsersViewModel: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         if let text = searchController.searchBar.text, !text.isEmpty {
+            self.filteredUsers = self.users.filter({ (user) -> Bool in
+                let loginContains = user.login?.lowercased().contains(text.lowercased())
+                let nameContains = user.name?.lowercased().contains(text.lowercased())
+                return (loginContains == true || nameContains == true)
+            })
+            self.filtering = true
+        } else {
+            self.filtering = false
+            self.filteredUsers = [User]()
         }
-
+        
         self.delegate?.reloadData()
     }
 }
