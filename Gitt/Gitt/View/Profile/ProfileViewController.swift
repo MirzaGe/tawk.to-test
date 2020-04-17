@@ -26,7 +26,13 @@ class ProfileViewController: BaseViewController {
     @IBOutlet weak var textView_Notes: UITextView!
     @IBOutlet weak var button_Save: UIButton!
     
+    private var user: User!
+    
     // MARK: - Functions
+    
+    private func setupBindings() {
+        
+    }
     
     private func setupUI() {
         let blurEffect = UIBlurEffect(style: .light)
@@ -50,5 +56,6 @@ class ProfileViewController: BaseViewController {
         super.viewDidLoad()
 
         self.setupUI()
+        self.setupBindings()
     }
 }

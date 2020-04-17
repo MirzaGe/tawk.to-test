@@ -54,6 +54,7 @@
 		40D999F92448CA08003ACCA3 /* Users.json in Resources */ = {isa = PBXBuildFile; fileRef = 40D999F82448CA08003ACCA3 /* Users.json */; };
 		40D999FD244981D9003ACCA3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D999FB244981D9003ACCA3 /* ProfileViewController.swift */; };
 		40D999FE244981D9003ACCA3 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40D999FC244981D9003ACCA3 /* ProfileViewController.xib */; };
+		40D99A402449CEC4003ACCA3 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D99A3F2449CEC4003ACCA3 /* ProfileViewModel.swift */; };
 		40E3A95624479D3500ACFFA6 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A95524479D3500ACFFA6 /* Reachability.swift */; };
 		E1648D5EE68C6414FF1B3022 /* Pods_GittTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DB5B5750FFBF29B0CDED082 /* Pods_GittTests.framework */; };
 /* End PBXBuildFile section */
@@ -130,6 +131,7 @@
 		40D999F82448CA08003ACCA3 /* Users.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Users.json; sourceTree = "<group>"; };
 		40D999FB244981D9003ACCA3 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		40D999FC244981D9003ACCA3 /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
+		40D99A3F2449CEC4003ACCA3 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		40E3A95524479D3500ACFFA6 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		93B6B890F20098235A75C612 /* Pods_Gitt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gitt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4FA66FB349BD4F24A2ABD45 /* Pods-GittTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GittTests.release.xcconfig"; path = "Target Support Files/Pods-GittTests/Pods-GittTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -448,6 +450,7 @@
 		40D999FF244981DD003ACCA3 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				40D99A3F2449CEC4003ACCA3 /* ProfileViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -680,6 +683,7 @@
 				40C859FE243F24C400D9B5BE /* BaseViewController.swift in Sources */,
 				402F5A6B24482C67003FC6D2 /* Gitt.xcdatamodeld in Sources */,
 				40C85A0C243F532D00D9B5BE /* UIColor+Gitt.swift in Sources */,
+				40D99A402449CEC4003ACCA3 /* ProfileViewModel.swift in Sources */,
 				4064E827243E61BE00DE7384 /* SceneDelegate.swift in Sources */,
 				40D999F52448C8ED003ACCA3 /* ConnectionError.swift in Sources */,
 				408A410F24485861004A6BD5 /* CacheConfig.swift in Sources */,

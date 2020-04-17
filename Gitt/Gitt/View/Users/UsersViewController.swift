@@ -23,30 +23,14 @@ class UsersViewController: BaseViewController {
     // MARK: - Functions
     
     private func setupBindings() {
+        weak var weakSelf = self
+        
         self.tableView.dataSource = self.viewModel
         self.tableView.delegate = self.viewModel
         
         self.viewModel.loaderIsHidden
             .bind(to: self.view_ActivityIndicatorContainer.rx.isHidden)
             .disposed(by: self.disposeBag)
-    }
-    
-    private func setupUI() {
-        weak var weakSelf = self
-        
-        self.title = "Users"
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        
-        self.view.addSubview(self.tableView)
-        self.tableView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            self.tableView.topAnchor.constraint(equalTo: self.view.topAnchor),
-            self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-            self.tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            self.tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-        ])
-        
-        self.addPullToRefreshControl(to: self.tableView)
         
         self.refreshControl.rx.controlEvent(.valueChanged)
             .map { _ in
@@ -67,6 +51,22 @@ class UsersViewController: BaseViewController {
                 weakSelf?.refreshControl.endRefreshing()
             }
         }).disposed(by: self.disposeBag)
+    }
+    
+    private func setupUI() {
+        self.title = "Users"
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        
+        self.view.addSubview(self.tableView)
+        self.tableView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.tableView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            self.tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            self.tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+        ])
+        
+        self.addPullToRefreshControl(to: self.tableView)
     }
     
     // MARK: Overrides
