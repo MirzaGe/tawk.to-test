@@ -17,6 +17,8 @@ class ProfileViewController: BaseViewController {
     
     // MARK: - Properties
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     @IBOutlet weak var imageView_BG: UIImageView!
     @IBOutlet weak var imageView_Banner: UIImageView!
     
@@ -67,6 +69,12 @@ class ProfileViewController: BaseViewController {
             .bind(to: self.textView_Notes.rx.text)
             .disposed(by: self.disposeBag)
         
+        self.viewModel.imageBanner
+            .subscribe(onNext: { imageBanner in
+                weakSelf?.imageView_BG.image = imageBanner
+                weakSelf?.imageView_Banner.image = imageBanner
+            }).disposed(by: self.disposeBag)
+        
         self.viewModel.startShimmer
             .subscribe(onNext: { startShimmer in
                 weakSelf?.view_ShimmerContainer.isHidden = !startShimmer
@@ -79,7 +87,7 @@ class ProfileViewController: BaseViewController {
     private func setupUI() {
         let blurEffect = UIBlurEffect(style: .light)
         let blurredEffectView = UIVisualEffectView(effect: blurEffect)
-        self.view.addSubview(blurredEffectView)
+        self.imageView_BG.addSubview(blurredEffectView)
         blurredEffectView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
@@ -88,9 +96,6 @@ class ProfileViewController: BaseViewController {
             blurredEffectView.leadingAnchor.constraint(equalTo: self.imageView_BG.leadingAnchor),
             blurredEffectView.trailingAnchor.constraint(equalTo: self.imageView_BG.trailingAnchor)
         ])
-        
-        self.view.bringSubviewToFront(self.imageView_Banner)
-        self.view.bringSubviewToFront(self.view_ShimmerContainer)
     }
     
     // MARK: Overrides
@@ -100,6 +105,12 @@ class ProfileViewController: BaseViewController {
         
         self.setupUI()
         self.setupBindings()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.viewModel.viewWillDisappear()
     }
 }
 

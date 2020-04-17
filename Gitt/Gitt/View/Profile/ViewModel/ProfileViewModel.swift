@@ -6,6 +6,7 @@
 //  Copyright © 2020 CitusLabs. All rights reserved.
 //
 
+import Combine
 import Foundation
 import RxCocoa
 import RxSwift
@@ -30,26 +31,57 @@ class ProfileViewModel: BaseViewModel {
     
     /// Determines the state of shimmer
     var startShimmer = BehaviorRelay<Bool>(value: true)
-    var imageUrl = BehaviorRelay<URL?>(value: nil)
-
-    var followersPresentable = BehaviorRelay<String>(value: "")
-    var followingPresentable = BehaviorRelay<String>(value: "")
-    var namePresentable = BehaviorRelay<String>(value: "")
-    var companyPresentable = BehaviorRelay<String>(value: "")
-    var blogPresentable = BehaviorRelay<String>(value: "")
-    var notesPresentable = BehaviorRelay<String>(value: "")
+    var imageBanner = BehaviorRelay<UIImage?>(value: nil)
+    
+    var followersPresentable = BehaviorRelay<String>(value: "Followers")
+    var followingPresentable = BehaviorRelay<String>(value: "Following")
+    var namePresentable = BehaviorRelay<String>(value: "Name: ")
+    var companyPresentable = BehaviorRelay<String>(value: "Company: ")
+    var blogPresentable = BehaviorRelay<String>(value: "Blog: ")
+    var notesPresentable = BehaviorRelay<String>(value: "Notes...")
+    
+    private var cancellable: AnyCancellable?
     
     // MARK: - Functions
-        
-    /// Call API to get more user data
+    
     /// Put the data to the behavior relays.
+    private func getPresentables() {
+        self.followersPresentable.accept("Followers: \(self.user.followers ?? 0)")
+        self.followingPresentable.accept("Following: \(self.user.following ?? 0)")
+        self.namePresentable.accept("Name: \(self.user.name ?? "")")
+        self.companyPresentable.accept("Company: \(self.user.company ?? "")")
+        self.blogPresentable.accept("Blog: \(self.user.blog ?? "")")
+        
+        // Image Loader...
+        let imageLoader = ImageLoader.shared.loadImage(from: URL(string: self.user.avatarUrl ?? "")!)
+        self.cancellable = imageLoader.sink { [unowned self] image in self.imageBanner.accept(image)
+        }
+        
+        // TODO: Do notes from CoreData....
+        //self.followingPresentable.accept("Followers: \(self.user.following ?? 0)")
+    }
+    
+    /// Call API to get more user data
     private func loadData() {
+        self.startShimmer.accept(true)
+        
         guard let userId = self.user.id else {
             self.delegate?.closeProfile()
             return
         }
         
-        //APIManager.GetUsers
+        APIManager.GetUser(userId: userId).execute { (result) in
+            self.startShimmer.accept(false)
+            
+            switch result {
+            case let .success(user):
+                self.user = user
+                self.getPresentables()
+                
+            case let .failure(error):
+                self.showError(error.localizedDescription)
+            }
+        }
     }
     
     // MARK: Events
@@ -66,5 +98,9 @@ class ProfileViewModel: BaseViewModel {
         self.delegate = profileController
         self.user = user
         self.loadData()
+    }
+    
+    func viewWillDisappear() {
+        self.cancellable?.cancel()
     }
 }
