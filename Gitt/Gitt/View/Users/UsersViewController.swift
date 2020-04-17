@@ -19,6 +19,7 @@ class UsersViewController: BaseViewController {
     
     private var viewModel: UsersViewModel!
     private let disposeBag = DisposeBag()
+    private var searchController: UISearchController!
     
     // MARK: - Functions
     
@@ -27,6 +28,7 @@ class UsersViewController: BaseViewController {
         
         self.tableView.dataSource = self.viewModel
         self.tableView.delegate = self.viewModel
+        self.searchController.searchResultsUpdater = self.viewModel
         
         self.viewModel.loaderIsHidden
             .bind(to: self.view_ActivityIndicatorContainer.rx.isHidden)
@@ -67,6 +69,9 @@ class UsersViewController: BaseViewController {
         ])
         
         self.addPullToRefreshControl(to: self.tableView)
+        
+        self.searchController = UISearchController(searchResultsController: nil)
+        self.navigationItem.searchController = self.searchController
     }
     
     // MARK: Overrides

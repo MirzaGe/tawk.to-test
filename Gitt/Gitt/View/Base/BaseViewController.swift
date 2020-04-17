@@ -20,6 +20,23 @@ class BaseViewController: UIViewController {
         }
     }
 
+    private var reachabilityRetry: Int = 0
+    let reachability = try? Reachability()
+    
+    lazy var label_InternetError: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 12.0, weight: .medium)
+        label.text = "No internet connection 😩 \nRefreshing..."
+        label.textColor = .white
+        label.textAlignment = .center
+        label.numberOfLines = 2
+        return label
+    }()
+    
+    lazy var view_InternetError: UIView = {
+        return UIView.new(backgroundColor: .gittErrorRed, alpha: 0)
+    }()
+    
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.tintColor = .textColor
@@ -77,6 +94,25 @@ class BaseViewController: UIViewController {
         tableView.refreshControl = self.refreshControl
     }
     
+    /// Begin execution of retry
+    func execute(on queue: DispatchQueue, retry: Int = 0, closure: @escaping () -> Void) {
+        let delay = getDelay(for: retry)
+        queue.asyncAfter(
+            deadline: DispatchTime.now() + .milliseconds(delay),
+            execute: closure)
+    }
+    
+    /// Delay for exponential backoff
+    func getDelay(for n: Int) -> Int {
+        let maxDelay = 300000 // 5 minutes
+        let delay = Int(pow(2.0, Double(n))) * 1000
+        let jitter = Int.random(in: 0...1000)
+        
+        print("New Delay Refresh: \(min(delay + jitter, maxDelay))")
+        
+        return min(delay + jitter, maxDelay)
+    }
+    
     /// Layout activity indicator view.
     func layoutActivityIndicator() {
         self.view.addSubview(self.view_ActivityIndicatorContainer)
@@ -89,12 +125,38 @@ class BaseViewController: UIViewController {
             self.view_ActivityIndicatorContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
         ])
     }
-        
-    // MARK: Overrides
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    private func checkIfInternetConnectionHasComeBack() {
+        if let connection = self.reachability?.connection {
+            if connection == .unavailable {
+                self.execute(on: DispatchQueue.main, retry: self.reachabilityRetry) {
+                    self.reachabilityRetry += 1
+                    NotificationCenter.default.post(name: AppNotificationName.refresh, object: nil)
+                    self.checkIfInternetConnectionHasComeBack()
+                }
+            }
+        }
+    }
+    
+    private func setupReachability() {
+        self.reachability?.whenReachable = { reachability in
+            self.toggleInternetStatusView(isHidden: true)
+        }
+        self.reachability?.whenUnreachable = { _ in
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                self.toggleInternetStatusView(isHidden: false)
+                self.checkIfInternetConnectionHasComeBack()
+            }
+        }
         
+        do {
+            try self.reachability?.startNotifier()
+        } catch {
+            print("Unable to start notifier")
+        }
+    }
+    
+    private func setupUI() {
         self.backgroundColor = .backgroundColor
         self.layoutActivityIndicator()
         
@@ -102,5 +164,43 @@ class BaseViewController: UIViewController {
             .font: UIFont.boldSystemFont(ofSize: 34.0),
             .foregroundColor: UIColor.textColor
         ]
+        
+        self.view_InternetError.addSubview(self.label_InternetError)
+        self.label_InternetError.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            self.label_InternetError.centerXAnchor.constraint(equalTo: self.view_InternetError.centerXAnchor),
+            self.label_InternetError.centerYAnchor.constraint(equalTo: self.view_InternetError.centerYAnchor)
+        ])
+    }
+    
+    private func toggleInternetStatusView(isHidden: Bool) {
+        if !isHidden, let topMostController = UIViewController.current() {
+            topMostController.view.addSubview(self.view_InternetError)
+            self.view_InternetError.translatesAutoresizingMaskIntoConstraints = false
+            
+            NSLayoutConstraint.activate([
+                self.view_InternetError.heightAnchor.constraint(equalToConstant: 50.0),
+                self.view_InternetError.topAnchor.constraint(equalTo: topMostController.view.safeAreaLayoutGuide.topAnchor),
+                self.view_InternetError.leadingAnchor.constraint(equalTo: topMostController.view.leadingAnchor),
+                self.view_InternetError.trailingAnchor.constraint(equalTo: topMostController.view.trailingAnchor)
+            ])
+                    
+            UIView.animate(withDuration: 0.5) {
+                self.view_InternetError.alpha = 1.0
+            }
+            
+        } else {
+            self.view_InternetError.removeFromSuperview()
+        }
+    }
+        
+    // MARK: Overrides
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.setupUI()
+        self.setupReachability()
     }
 }

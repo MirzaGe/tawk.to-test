@@ -30,13 +30,28 @@ class BaseViewModel: NSObject {
     
     // MARK: - Functions
     
-    func showError(_ errorMessage: String) {
+    @objc func refresh() { }
+    
+    func showError(_ error: Error) {
+        if (error as NSError).code == -1009 { return }
         UIViewController.current()?.alert(
             title: "Oops!",
-            message: "An error has occured: \(errorMessage)",
+            message: "An error has occured: \(error.localizedDescription)",
             okayButtonTitle: "OK",
             cancelButtonTitle: nil,
             withBlock: nil
+        )
+    }
+    
+    override init() {
+        super.init()
+        
+        // Be notified from internet status.
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.refresh),
+            name: AppNotificationName.refresh,
+            object: nil
         )
     }
 }

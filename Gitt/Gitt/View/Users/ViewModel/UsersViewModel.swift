@@ -40,7 +40,7 @@ class UsersViewModel: BaseViewModel {
     // MARK: - Functions
     
     /// Function to re-do searching. Called by the refresh control
-    func refresh() {
+    override func refresh() {
         self.users.removeAll()
         self.loadUsers(since: 0)
     }
@@ -66,7 +66,7 @@ class UsersViewModel: BaseViewModel {
                 self.delegate?.reloadData()
                 
             case let .failure(error):
-                self.showError(error.localizedDescription)
+                self.showError(error)
             }
             
         }
@@ -79,6 +79,14 @@ class UsersViewModel: BaseViewModel {
         
         self.delegate = usersController
         self.loadUsers()
+        
+        // Be notified from internet status.
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.refresh),
+            name: AppNotificationName.refresh,
+            object: nil
+        )
     }
     
     /// A controller lifecycle method
@@ -139,5 +147,16 @@ extension UsersViewModel: UITableViewDataSource {
                 tableView.tableFooterView = nil
             }
         }
+    }
+}
+
+// MARK: - UISearchResultsUpdating
+
+extension UsersViewModel: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        if let text = searchController.searchBar.text, !text.isEmpty {
+        }
+
+        self.delegate?.reloadData()
     }
 }

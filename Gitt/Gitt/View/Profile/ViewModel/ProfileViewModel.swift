@@ -80,7 +80,7 @@ class ProfileViewModel: BaseViewModel {
                 self.getPresentables()
                 
             case let .failure(error):
-                self.showError(error.localizedDescription)
+                self.showError(error)
             }
         }
     }
@@ -92,6 +92,10 @@ class ProfileViewModel: BaseViewModel {
     }
     
     // MARK: Overrides
+    
+    override func refresh() {
+        self.loadData()
+    }
     
     init(profileController: ProfileDelegate?, user: User) {
         super.init()
