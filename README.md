@@ -15,6 +15,7 @@ Dark Mode                  |  Light Mode.
 
 ---
 ## Accomplished Requirements
+- Swift 5.1
 - User list in code.
 - Profile viewer in IB.
 - Dark Mode support.
@@ -33,7 +34,6 @@ Dark Mode                  |  Light Mode.
 ---
 
 ## TODOS
-- Swift 5.1
 - Coordinator (still studying)
 - Finish Unit and UI Testing.
 - Coredata / Offline mode.
