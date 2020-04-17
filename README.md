@@ -34,7 +34,7 @@ Dark Mode                  |  Light Mode + Cache.
 
 ## TODOS
 - Swift 5.1
-- Coordinator
+- Coordinator (still studying)
 - Finish Unit and UI Testing.
 - Coredata / Offline mode.
 - Limit to 1 request.
