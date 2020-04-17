@@ -110,8 +110,10 @@ extension UsersViewModel: UITableViewDataSource {
             cell = UserTableViewCell()
         }
         
-        let user = self.users[indexPath.row]
-        cell?.configure(with: user)
+        if self.users.count > indexPath.row {
+            let user = self.users[indexPath.row]
+            cell?.configure(with: user)
+        }
         
         return cell!
     }

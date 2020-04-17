@@ -54,7 +54,8 @@ class ProfileViewModel: BaseViewModel {
         
         // Image Loader...
         let imageLoader = ImageLoader.shared.loadImage(from: URL(string: self.user.avatarUrl ?? "")!)
-        self.cancellable = imageLoader.sink { [unowned self] image in self.imageBanner.accept(image)
+        self.cancellable = imageLoader.sink { [weak self] image in
+            self?.imageBanner.accept(image)
         }
         
         // TODO: Do notes from CoreData....
