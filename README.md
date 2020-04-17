@@ -27,6 +27,7 @@ Dark Mode                  |  Light Mode.
 - Shimmer/Skeleton.
 - Exponential Backoff.
 - Result types in networking.
+- Vanilla Apple's API in networking.
 - Codables.
 - Search.
 - Started Unit UI Test.
