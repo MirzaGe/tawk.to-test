@@ -26,6 +26,9 @@ class ProfileViewController: BaseViewController {
     @IBOutlet weak var textView_Notes: UITextView!
     @IBOutlet weak var button_Save: UIButton!
     
+    @IBOutlet weak var view_ShimmerContainer: UIView!
+    @IBOutlet var view_Shimmers: [UIView]!
+    
     var user: User!
     
     // MARK: - Functions
