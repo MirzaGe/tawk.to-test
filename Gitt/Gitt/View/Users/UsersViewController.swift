@@ -71,6 +71,7 @@ class UsersViewController: BaseViewController {
         self.addPullToRefreshControl(to: self.tableView)
         
         self.searchController = UISearchController(searchResultsController: nil)
+        self.searchController.obscuresBackgroundDuringPresentation = false
         self.navigationItem.searchController = self.searchController
     }
     
