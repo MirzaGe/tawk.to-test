@@ -6,6 +6,8 @@
 //  Copyright © 2020 CitusLabs. All rights reserved.
 //
 
+import RxCocoa
+import RxSwift
 import UIKit
 
 /**
@@ -31,10 +33,23 @@ class ProfileViewController: BaseViewController {
     
     var user: User!
     
+    private var viewModel: ProfileViewModel!
+    private let disposeBag = DisposeBag()
+    
     // MARK: - Functions
     
     private func setupBindings() {
+        weak var weakSelf = self
         
+        self.viewModel = ProfileViewModel(profileController: self, user: self.user)
+        
+        self.viewModel.startShimmer
+            .subscribe(onNext: { startShimmer in
+                weakSelf?.view_ShimmerContainer.isHidden = !startShimmer
+                if startShimmer {
+                    weakSelf?.view_Shimmers.forEach({ $0.shimmer() })
+                }
+        }).disposed(by: self.disposeBag)
     }
     
     private func setupUI() {
@@ -51,6 +66,7 @@ class ProfileViewController: BaseViewController {
         ])
         
         self.view.bringSubviewToFront(self.imageView_Banner)
+        self.view.bringSubviewToFront(self.view_ShimmerContainer)
     }
     
     // MARK: Overrides
@@ -60,5 +76,13 @@ class ProfileViewController: BaseViewController {
 
         self.setupUI()
         self.setupBindings()
+    }
+}
+
+// MARK: -
+
+extension ProfileViewController: ProfileDelegate {
+    func closeProfile() {
+        self.navigationController?.popViewController(animated: true)
     }
 }
