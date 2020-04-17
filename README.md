@@ -30,6 +30,8 @@ Dark Mode                  |  Light Mode.
 - Codables.
 - Search.
 - Started Unit UI Test.
+- Invert every 4th avatar.
+- Limit to 1 request.
 
 ---
 
@@ -37,8 +39,6 @@ Dark Mode                  |  Light Mode.
 - Coordinator (still studying)
 - Finish Unit and UI Testing.
 - Coredata / Offline mode.
-- Limit to 1 request.
-- Invert every 4th avatar.
 
 ## Tech Stacks
 
