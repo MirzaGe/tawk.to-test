@@ -30,12 +30,12 @@ Dark Mode                  |  Light Mode.
 - Codables.
 - Search.
 - Started Unit UI Test.
+- Finish Unit and UI Testing.
 
 ---
 
 ## TODOS
 - Coordinator (still studying)
-- Finish Unit and UI Testing.
 - Coredata / Offline mode.
 - Limit to 1 request.
 - Invert every 4th avatar.
