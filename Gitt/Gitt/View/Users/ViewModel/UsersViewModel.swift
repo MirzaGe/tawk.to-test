@@ -91,11 +91,6 @@ class UsersViewModel: BaseViewModel {
             object: nil
         )
     }
-    
-    /// A controller lifecycle method
-    func viewDidLoad() {
-        
-    }
 }
 
 // MARK: - UITableViewDelegate
