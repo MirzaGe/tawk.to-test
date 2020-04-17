@@ -10,7 +10,8 @@ import Foundation
 import UIKit
 import Combine
 
-class UserTableViewCell: BaseTableViewCell {
+class UserTableViewCell:
+BaseTableViewCell {
     
     // MARK: - Properties
     

@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileViewController" customModule="Gitt" customModuleProvider="target">
             <connections>
-                <outlet property="button_Save" destination="0N8-t5-0Qx" id="paL-Qr-sKZ"/>
+                <outlet property="button_Save" destination="0N8-t5-0Qx" id="yNv-oS-HZa"/>
                 <outlet property="imageView_BG" destination="BlU-q5-I1v" id="BCs-dr-3sa"/>
                 <outlet property="imageView_Banner" destination="3m3-zL-RrQ" id="Jov-YT-mEi"/>
                 <outlet property="label_Blog" destination="rdM-ap-oaA" id="8Ev-HF-FBP"/>

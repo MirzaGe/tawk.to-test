@@ -26,7 +26,7 @@ class ProfileViewController: BaseViewController {
     @IBOutlet weak var textView_Notes: UITextView!
     @IBOutlet weak var button_Save: UIButton!
     
-    private var user: User!
+    var user: User!
     
     // MARK: - Functions
     

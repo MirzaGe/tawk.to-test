@@ -14,7 +14,7 @@ import RxSwift
  Protocol of `UsersViewModel`.
  */
 protocol UsersDelegate: BaseViewModelDelegate {
-    // func showDetail(with result: Result)
+     func showProfile(for user: User)
 }
 
 /**
@@ -92,6 +92,9 @@ class UsersViewModel: BaseViewModel {
 extension UsersViewModel: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        let user = self.users[indexPath.row]
+        self.delegate?.showProfile(for: user)
     }
 }
 

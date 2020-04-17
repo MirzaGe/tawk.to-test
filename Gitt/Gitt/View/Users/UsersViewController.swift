@@ -90,12 +90,12 @@ class UsersViewController: BaseViewController {
 // MARK: - UsersDelegate
 
 extension UsersViewController: UsersDelegate {
-//    func showDetail(with result: Result) {
-//        // TODO: Use coordinator or router.
-//        let searchDetailController = SearchDetailViewController(selectedResult: result)
-//        let detailNavCon = UINavigationController(rootViewController: searchDetailController)
-//        self.splitViewController?.showDetailViewController(detailNavCon, sender: nil)
-//    }
+    func showProfile(for user: User) {
+        // TODO: Use coordinator or router.
+        let profileController = ProfileViewController(nibName: "ProfileViewController", bundle: nil)
+        profileController.user = user
+        self.navigationController?.pushViewController(profileController, animated: true)
+    }
     
     func reloadData() {
         self.tableView.reloadData()

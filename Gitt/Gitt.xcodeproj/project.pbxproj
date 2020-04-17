@@ -19,6 +19,7 @@
 		4064E827243E61BE00DE7384 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4064E826243E61BE00DE7384 /* SceneDelegate.swift */; };
 		4064E831243E61C100DE7384 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4064E830243E61C100DE7384 /* Assets.xcassets */; };
 		4064E834243E61C100DE7384 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4064E832243E61C100DE7384 /* LaunchScreen.storyboard */; };
+		4077455D2449E90800647D22 /* GetUser.json in Resources */ = {isa = PBXBuildFile; fileRef = 4077455C2449E90800647D22 /* GetUser.json */; };
 		408A410B24484841004A6BD5 /* UsersViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408A410A24484841004A6BD5 /* UsersViewModelTests.swift */; };
 		408A410D244856D9004A6BD5 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408A410C244856D9004A6BD5 /* ImageCache.swift */; };
 		408A410F24485861004A6BD5 /* CacheConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408A410E24485861004A6BD5 /* CacheConfig.swift */; };
@@ -96,6 +97,7 @@
 		4064E840243E61C100DE7384 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4064E845243E61C100DE7384 /* GittUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GittUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4064E84B243E61C100DE7384 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4077455C2449E90800647D22 /* GetUser.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GetUser.json; sourceTree = "<group>"; };
 		408A410A24484841004A6BD5 /* UsersViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModelTests.swift; sourceTree = "<group>"; };
 		408A410C244856D9004A6BD5 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		408A410E24485861004A6BD5 /* CacheConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheConfig.swift; sourceTree = "<group>"; };
@@ -405,6 +407,7 @@
 			isa = PBXGroup;
 			children = (
 				40D999F82448CA08003ACCA3 /* Users.json */,
+				4077455C2449E90800647D22 /* GetUser.json */,
 			);
 			path = StubbedResponses;
 			sourceTree = "<group>";
@@ -576,6 +579,7 @@
 				40D999F92448CA08003ACCA3 /* Users.json in Resources */,
 				4064E834243E61C100DE7384 /* LaunchScreen.storyboard in Resources */,
 				40D999FE244981D9003ACCA3 /* ProfileViewController.xib in Resources */,
+				4077455D2449E90800647D22 /* GetUser.json in Resources */,
 				4064E831243E61C100DE7384 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -883,7 +887,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.glennposadas.gitt;
 				PRODUCT_NAME = Gitt;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -903,7 +907,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.glennposadas.gitt;
 				PRODUCT_NAME = Gitt;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
