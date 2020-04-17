@@ -18,4 +18,13 @@ struct APIManager {
             return RequestData(path: baseURL, method: .get, params: self.parameters, headers: nil)
         }
     }
+    
+    /// Get specific user by `id`.
+    struct GetUser: RequestType {
+        typealias ResponseType = User
+        var userId: Int
+        var data: RequestData {
+            return RequestData(path: "\(baseURL)/\(userId)", method: .get, params: nil, headers: nil)
+        }
+    }
 }
