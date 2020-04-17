@@ -5,7 +5,8 @@
 # Gitt <img src="https://i.imgur.com/LwN6axb.png" width="30" height="30">
 
   
-****Gitt**** is a project, an online assessment test, as part of my job application at [Tawkto.]([https://www.tawk.to/])
+****Gitt**** is a project, an online assessment test, as part of my job application at [Tawkto.]([https://www.tawk.to/)
+
 ---
 
 
@@ -47,7 +48,9 @@ Dependencies are managed by [Cocoapods](https://cocoapods.org/).
 
 **MVVM** is the architectural pattern used together with [RxSwift](https://github.com/ReactiveX/RxSwift) to maximize the utilization of the said pattern.
 
-The important part of the project was **UI Tested**. And viewModels are **Unit Tested**, using the Apple's vanilla **XCTest** and **XCUITest** test frameworks.
+Adding Coordinator is in TODOS.
+
+**Unit Tests** and **UI Tests** were started using the Apple's vanilla **XCTest** and **XCUITest** test frameworks.
 
 ---
 # NON TECHNICAL PART
