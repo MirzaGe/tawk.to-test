@@ -17,7 +17,7 @@ BaseTableViewCell {
     
     private var username: UILabel!
     private var details: UILabel!
-    private var poster: UIImageView!
+    private var imageView_Avatar: UIImageView!
     private var cancellable: AnyCancellable?
     private var animator: UIViewPropertyAnimator?
     
@@ -35,24 +35,36 @@ BaseTableViewCell {
     
     override public func prepareForReuse() {
         super.prepareForReuse()
-        poster.image = nil
-        poster.alpha = 0.0
+        imageView_Avatar.image = nil
+        imageView_Avatar.alpha = 0.0
         animator?.stopAnimation(true)
         cancellable?.cancel()
     }
     
-    func configure(with user: User) {
+    func configure(with user: User, invert: Bool) {
         self.username.text = user.login ?? "No username"
         self.details.text = "userId: \(user.id ?? 0)"
-        self.cancellable = self.loadImage(for: user).sink { [unowned self] image in self.showImage(image: image) }
+        self.cancellable = self.loadImage(for: user).sink { [unowned self] image in
+            self.showImage(image: image, invert: invert)
+        }
     }
     
-    private func showImage(image: UIImage?) {
-        poster.alpha = 0.0
-        animator?.stopAnimation(false)
-        poster.image = image
-        animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.3, delay: 0, options: .curveLinear, animations: {
-            self.poster.alpha = 1.0
+    private func showImage(image: UIImage?, invert: Bool) {
+        self.imageView_Avatar.alpha = 0.0
+        self.animator?.stopAnimation(false)
+        self.imageView_Avatar.image = image
+        
+        if invert,
+            let filter = CIFilter(name: "CIColorInvert"),
+            let image = image,
+            let ciimage = CIImage(image: image) {
+            filter.setValue(ciimage, forKey: kCIInputImageKey)
+            let newImage = UIImage(ciImage: filter.outputImage!)
+            self.imageView_Avatar.image = newImage
+        }
+        
+        self.animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.3, delay: 0, options: .curveLinear, animations: {
+            self.imageView_Avatar.alpha = 1.0
         })
     }
     
@@ -75,11 +87,11 @@ BaseTableViewCell {
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
         ])
         
-        self.poster = UIImageView()
-        stackView.addArrangedSubview(self.poster)
+        self.imageView_Avatar = UIImageView()
+        stackView.addArrangedSubview(self.imageView_Avatar)
         NSLayoutConstraint.activate([
-            self.poster.widthAnchor.constraint(equalToConstant: 60.0),
-            self.poster.heightAnchor.constraint(equalToConstant: 60.0)
+            self.imageView_Avatar.widthAnchor.constraint(equalToConstant: 60.0),
+            self.imageView_Avatar.heightAnchor.constraint(equalToConstant: 60.0)
         ])
         
         self.username = UILabel()

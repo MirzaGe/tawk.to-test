@@ -132,13 +132,15 @@ extension UsersViewModel: UITableViewDataSource {
         
         if self.filtering {
             if self.filteredUsers.count > indexPath.row {
+                let shouldInvert = indexPath.row % 4 == 0
                 let user = self.filteredUsers[indexPath.row]
-                cell?.configure(with: user)
+                cell?.configure(with: user, invert: shouldInvert)
             }
         } else {
             if self.users.count > indexPath.row {
+                let shouldInvert = indexPath.row % 4 == 0
                 let user = self.users[indexPath.row]
-                cell?.configure(with: user)
+                cell?.configure(with: user, invert: shouldInvert)
             }
         }
         
@@ -152,9 +154,6 @@ extension UsersViewModel: UITableViewDataSource {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let lastItem = self.users.count - 1
         if indexPath.row == lastItem {
-            
-            print("Loading new sets of users....... ✅ self.since: \(self.since)")
-            
             let spinner = UIActivityIndicatorView(style: .medium)
             spinner.startAnimating()
             spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: tableView.bounds.width, height: CGFloat(44))
