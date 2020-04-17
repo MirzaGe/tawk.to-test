@@ -52,6 +52,8 @@
 		40D999F52448C8ED003ACCA3 /* ConnectionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D999F42448C8ED003ACCA3 /* ConnectionError.swift */; };
 		40D999F72448C911003ACCA3 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D999F62448C911003ACCA3 /* APIManager.swift */; };
 		40D999F92448CA08003ACCA3 /* Users.json in Resources */ = {isa = PBXBuildFile; fileRef = 40D999F82448CA08003ACCA3 /* Users.json */; };
+		40D999FD244981D9003ACCA3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D999FB244981D9003ACCA3 /* ProfileViewController.swift */; };
+		40D999FE244981D9003ACCA3 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40D999FC244981D9003ACCA3 /* ProfileViewController.xib */; };
 		40E3A95624479D3500ACFFA6 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E3A95524479D3500ACFFA6 /* Reachability.swift */; };
 		E1648D5EE68C6414FF1B3022 /* Pods_GittTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DB5B5750FFBF29B0CDED082 /* Pods_GittTests.framework */; };
 /* End PBXBuildFile section */
@@ -126,6 +128,8 @@
 		40D999F42448C8ED003ACCA3 /* ConnectionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionError.swift; sourceTree = "<group>"; };
 		40D999F62448C911003ACCA3 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		40D999F82448CA08003ACCA3 /* Users.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Users.json; sourceTree = "<group>"; };
+		40D999FB244981D9003ACCA3 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		40D999FC244981D9003ACCA3 /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		40E3A95524479D3500ACFFA6 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		93B6B890F20098235A75C612 /* Pods_Gitt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gitt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4FA66FB349BD4F24A2ABD45 /* Pods-GittTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GittTests.release.xcconfig"; path = "Target Support Files/Pods-GittTests/Pods-GittTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -339,6 +343,7 @@
 			children = (
 				40C859FC243F24B800D9B5BE /* Base */,
 				40C859F7243E6C9700D9B5BE /* Users */,
+				40D999FA244981B1003ACCA3 /* Profile */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -428,6 +433,23 @@
 				40C859FD243F24C400D9B5BE /* BaseViewController.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		40D999FA244981B1003ACCA3 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				40D999FF244981DD003ACCA3 /* ViewModel */,
+				40D999FB244981D9003ACCA3 /* ProfileViewController.swift */,
+				40D999FC244981D9003ACCA3 /* ProfileViewController.xib */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		40D999FF244981DD003ACCA3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		A99B060FDDE155E49E97D391 /* Frameworks */ = {
@@ -550,6 +572,7 @@
 			files = (
 				40D999F92448CA08003ACCA3 /* Users.json in Resources */,
 				4064E834243E61C100DE7384 /* LaunchScreen.storyboard in Resources */,
+				40D999FE244981D9003ACCA3 /* ProfileViewController.xib in Resources */,
 				4064E831243E61C100DE7384 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -645,6 +668,7 @@
 				40D999F12448C8C2003ACCA3 /* NetworkDispatcher.swift in Sources */,
 				40C2348F2440582000A5A462 /* BaseTableView.swift in Sources */,
 				40C85A10243F572300D9B5BE /* UIViewController+Gitt.swift in Sources */,
+				40D999FD244981D9003ACCA3 /* ProfileViewController.swift in Sources */,
 				40C85A0E243F53E800D9B5BE /* UIView+Gitt.swift in Sources */,
 				40D999F32448C8D9003ACCA3 /* URLSessionNetworkDispatcher.swift in Sources */,
 				40C23479243F77BF00A5A462 /* AppEnv.swift in Sources */,

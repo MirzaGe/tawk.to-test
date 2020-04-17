@@ -39,7 +39,6 @@ class BaseTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        self.selectionStyle = .none
         self.separatorInset = UIEdgeInsets(top: 0, left: 16.0, bottom: 0, right: 0)
     }
     
