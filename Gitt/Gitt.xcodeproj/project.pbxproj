@@ -17,6 +17,7 @@
 		402F5A6B24482C67003FC6D2 /* Gitt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 402F5A6924482C67003FC6D2 /* Gitt.xcdatamodeld */; };
 		403BE80D244AD36D00339532 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403BE80B244AD36D00339532 /* User.swift */; };
 		403BE810244AD3CC00339532 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403BE80F244AD3CC00339532 /* CoreDataStack.swift */; };
+		404D1455244B158B0008C696 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404D1453244B158B0008C696 /* Note.swift */; };
 		4064E825243E61BE00DE7384 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4064E824243E61BE00DE7384 /* AppDelegate.swift */; };
 		4064E827243E61BE00DE7384 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4064E826243E61BE00DE7384 /* SceneDelegate.swift */; };
 		4064E831243E61C100DE7384 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4064E830243E61C100DE7384 /* Assets.xcassets */; };
@@ -92,6 +93,7 @@
 		402F5A6A24482C67003FC6D2 /* Gitt.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Gitt.xcdatamodel; sourceTree = "<group>"; };
 		403BE80B244AD36D00339532 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		403BE80F244AD3CC00339532 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		404D1453244B158B0008C696 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		4064E821243E61BE00DE7384 /* Gitt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gitt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4064E824243E61BE00DE7384 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4064E826243E61BE00DE7384 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -286,6 +288,7 @@
 		40C2346C243F70C100A5A462 /* Users */ = {
 			isa = PBXGroup;
 			children = (
+				404D1453244B158B0008C696 /* Note.swift */,
 				403BE80B244AD36D00339532 /* User.swift */,
 			);
 			path = Users;
@@ -712,6 +715,7 @@
 				40C2348D24404A5300A5A462 /* AppConfig.swift in Sources */,
 				40C2349124405D0900A5A462 /* UIButton+Gitt.swift in Sources */,
 				40E3A95624479D3500ACFFA6 /* Reachability.swift in Sources */,
+				404D1455244B158B0008C696 /* Note.swift in Sources */,
 				40D999F72448C911003ACCA3 /* APIManager.swift in Sources */,
 				403BE80D244AD36D00339532 /* User.swift in Sources */,
 			);

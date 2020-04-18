@@ -12,7 +12,6 @@ import CoreData
 
 @objc(User)
 public class User: NSManagedObject, Codable {
-    
     @nonobjc public class func fetchRequest() -> NSFetchRequest<User> {
         return NSFetchRequest<User>(entityName: "User")
     }
@@ -49,7 +48,7 @@ public class User: NSManagedObject, Codable {
     @NSManaged public var name: String?
     @NSManaged public var login: String?
     
-    @NSManaged public var customNote: String?
+    @NSManaged public var note: Note?
     
     enum CodingKeys: String, CodingKey {
         case avatarUrl = "avatar_url"
@@ -84,7 +83,7 @@ public class User: NSManagedObject, Codable {
         case updatedAt = "updated_at"
         case url = "url"
         
-        case customNote
+        case note
     }
     
     required convenience public init(from decoder: Decoder) throws {
@@ -129,7 +128,7 @@ public class User: NSManagedObject, Codable {
         updatedAt = try values.decodeIfPresent(String.self, forKey: .updatedAt)
         url = try values.decodeIfPresent(String.self, forKey: .url)
         
-        customNote = try values.decodeIfPresent(String.self, forKey: .customNote)
+        note = try values.decodeIfPresent(Note.self, forKey: .note)
     }
     
     public func encode(to encoder: Encoder) throws {
@@ -166,6 +165,6 @@ public class User: NSManagedObject, Codable {
         try container.encode(updatedAt, forKey: .updatedAt)
         try container.encode(url, forKey: .url)
         
-        try container.encode(customNote, forKey: .customNote)
+        try container.encode(note, forKey: .note)
     }
 }

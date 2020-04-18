@@ -7,6 +7,7 @@
 //
 
 import Combine
+import CoreData
 import Foundation
 import RxCocoa
 import RxSwift
@@ -28,11 +29,13 @@ class ProfileViewModel: BaseViewModel {
     
     private weak var delegate: ProfileDelegate?
     private var user: User!
+
+    // MARK: Outputs
     
     /// Determines the state of shimmer
     var startShimmer = BehaviorRelay<Bool>(value: true)
     var imageBanner = BehaviorRelay<UIImage?>(value: nil)
-    
+
     var followersPresentable = BehaviorRelay<String>(value: "Followers")
     var followingPresentable = BehaviorRelay<String>(value: "Following")
     var namePresentable = BehaviorRelay<String>(value: "Name: ")
@@ -46,6 +49,8 @@ class ProfileViewModel: BaseViewModel {
     
     /// Put the data to the behavior relays.
     private func getPresentables() {
+        if self.user == nil { return }
+        
         self.followersPresentable.accept("Followers: \(self.user.followers)")
         self.followingPresentable.accept("Following: \(self.user.following)")
         self.namePresentable.accept("Name: \(self.user.name ?? "")")
@@ -58,37 +63,100 @@ class ProfileViewModel: BaseViewModel {
             self?.imageBanner.accept(image)
         }
         
-        // TODO: Do notes from CoreData....
-        //self.followingPresentable.accept("Followers: \(self.user.following ?? 0)")
+        // Note from different entity.
+        let note = self.user.note?.userNote ?? ""
+        self.notesPresentable.accept(note)
+    }
+    
+    /// Fetch objects from Core Data for offline mode.
+    override func loadOfflineData() {
+        let managedObjectContext = CoreDataStack.shared.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<User>(entityName: "User")
+        
+        let userid = "\(Int(self.user.id))"
+        let predicate = NSPredicate(format: "id == \(userid)")
+        fetchRequest.predicate = predicate
+        
+        do {
+            let users = try managedObjectContext.fetch(fetchRequest)
+            self.user = users.first
+            self.getPresentables()
+        } catch let error {
+            print(error)
+        }
     }
     
     /// Call API to get more user data
     private func loadData() {
         self.startShimmer.accept(true)
+
+        let username = self.user.login ?? ""
         
-        let userId = Int(self.user.id)
+        self.startShimmer.accept(false)
+
+        // We can always load the offline data.
+        // Since we're handling a new user data below...
+        self.loadOfflineData()
         
+            
         // No need to put this in operation queue I suppose.
         // Since this only gets called once, and we don't have a pull-to-refresh
         // in this screen.
-        APIManager.GetUser(userId: userId).execute { (result) in
-            self.startShimmer.accept(false)
-            
-            switch result {
-            case let .success(user):
-                self.user = user as User
-                self.getPresentables()
-                
-            case let .failure(error):
-                self.showError(error)
-            }
-        }
+//        APIManager.GetUser(username: username).execute { (result) in
+//            self.startShimmer.accept(false)
+//
+//            switch result {
+//            case let .success(user):
+//                // Before we apply a fresh user,
+//                // Take note of the note object...
+//                let note = self.user.note
+//
+//                self.user = user as User
+//
+//                self.user.note = note
+//
+//                // Save to local db.
+//                CoreDataStack.shared.saveContext()
+//
+//                self.getPresentables()
+//
+//            case let .failure(error):
+//                self.showError(error)
+//            }
+//        }
     }
     
     // MARK: Events
     
     func save() {
+        if self.user.note == nil {
+            let newNote = Note(context: CoreDataStack.shared.persistentContainer.viewContext)
+            newNote.user = self.user
+            newNote.userNote = self.notesPresentable.value
+            self.user.note = newNote
+        } else {
+            self.user.note?.userNote = self.notesPresentable.value
+        }
         
+        CoreDataStack.shared.saveContext()
+        
+        
+        let managedObjectContext = CoreDataStack.shared.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<User>(entityName: "User")
+        
+        let newLoginId = "\(Int(self.user.id))"
+        let predicate = NSPredicate(format: "id == \(newLoginId)")
+        fetchRequest.predicate = predicate
+        
+        do {
+            let users = try managedObjectContext.fetch(fetchRequest)
+            self.user = users.first
+            self.getPresentables()
+        } catch let error {
+            print(error)
+        }
+        
+        self.showAlert("Saved!")
     }
     
     // MARK: Overrides
@@ -106,6 +174,7 @@ class ProfileViewModel: BaseViewModel {
     }
     
     func viewWillDisappear() {
+        NotificationCenter.default.removeObserver(self)
         self.cancellable?.cancel()
     }
 }

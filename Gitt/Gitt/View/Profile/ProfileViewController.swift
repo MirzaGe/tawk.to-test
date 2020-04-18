@@ -69,6 +69,11 @@ class ProfileViewController: BaseViewController {
             .bind(to: self.textView_Notes.rx.text)
             .disposed(by: self.disposeBag)
         
+        self.textView_Notes.rx.text
+            .orEmpty
+            .bind(to: self.viewModel.notesPresentable)
+            .disposed(by: self.disposeBag)
+        
         self.viewModel.imageBanner
             .subscribe(onNext: { imageBanner in
                 weakSelf?.imageView_BG.image = imageBanner
@@ -82,6 +87,11 @@ class ProfileViewController: BaseViewController {
                     weakSelf?.view_Shimmers.forEach({ $0.shimmer() })
                 }
             }).disposed(by: self.disposeBag)
+        
+        self.button_Save.rx.tap.subscribe { _ in
+            weakSelf?.view.endEditing(true)
+            weakSelf?.viewModel.save()
+        }.disposed(by: self.disposeBag)
     }
     
     private func setupUI() {
@@ -96,6 +106,12 @@ class ProfileViewController: BaseViewController {
             blurredEffectView.leadingAnchor.constraint(equalTo: self.imageView_BG.leadingAnchor),
             blurredEffectView.trailingAnchor.constraint(equalTo: self.imageView_BG.trailingAnchor)
         ])
+        
+        self.textView_Notes.setupLayer(
+            cornerRadius: 4.0,
+            borderWidth: 1.0,
+            borderColor: .textColor
+        )
     }
     
     // MARK: Overrides

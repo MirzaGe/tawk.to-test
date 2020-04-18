@@ -44,6 +44,16 @@ class BaseViewModel: NSObject {
         )
     }
     
+    func showAlert(_ message: String) {
+        UIViewController.current()?.alert(
+            title: message,
+            message: nil,
+            okayButtonTitle: "OK",
+            cancelButtonTitle: nil,
+            withBlock: nil
+        )
+    }
+    
     override init() {
         super.init()
         

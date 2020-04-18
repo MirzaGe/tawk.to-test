@@ -22,9 +22,9 @@ struct APIManager {
     /// Get specific user by `id`.
     struct GetUser: RequestType {
         typealias ResponseType = User
-        var userId: Int
+        var username: String
         var data: RequestData {
-            return RequestData(path: "\(baseURL)/\(userId)", method: .get, params: nil, headers: nil)
+            return RequestData(path: "\(baseURL)/\(username)", method: .get, params: nil, headers: nil)
         }
     }
 }

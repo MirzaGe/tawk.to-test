@@ -47,6 +47,7 @@ class CoreDataStack {
     // MARK: - Functions
 
     func saveContext () {
+        print("SAVE CONTEXT")
         let context = persistentContainer.viewContext
         if context.hasChanges {
             do {
