@@ -33,13 +33,13 @@ Dark Mode                  |  Light Mode.
 - Invert every 4th avatar.
 - Limit to 1 request.
 - Coredata / Offline mode.
+- Coredata save background | Main context for reading data.
 
 ---
 
 ## TODOS
 - Coordinator (still studying)
 - Finish Unit and UI Testing.
-- Multiple core data context.
 
 ## Tech Stacks
 
