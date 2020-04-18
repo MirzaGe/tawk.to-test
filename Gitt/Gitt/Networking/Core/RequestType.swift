@@ -22,19 +22,18 @@ extension RequestType {
         completion: @escaping ResultCallback<ResponseType>) {
         dispatcher.dispatch(request: self.data, onSuccess: { (responseData: Data) in
             do {
-                //let jsonDecoder = JSONDecoder()
-                //let result = try jsonDecoder.decode(ResponseType.self, from: responseData)
-                
                 guard let codingUserInfoKeyManagedObjectContext = CodingUserInfoKey.managedObjectContext else {
-                    fatalError("Failed to retrieve managed object context")
+                    DispatchQueue.main.async {
+                        completion(.failure(NSError(domain: "Error Core Data", code: 0, userInfo: nil)))
+                    }
+                    
+                    return
                 }
                 
                 let managedObjectContext = CoreDataStack.shared.persistentContainer.viewContext
                 let decoder = JSONDecoder()
                 decoder.userInfo[codingUserInfoKeyManagedObjectContext] = managedObjectContext
                 let result = try decoder.decode(ResponseType.self, from: responseData)
-                
-                CoreDataStack.shared.saveContext()
                 
                 DispatchQueue.main.async {
                     completion(.success(result))

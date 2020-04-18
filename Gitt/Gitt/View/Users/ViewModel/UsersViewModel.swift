@@ -47,8 +47,7 @@ class UsersViewModel: BaseViewModel {
     
     /// Function to re-do searching. Called by the refresh control
     override func refresh() {
-        self.users.removeAll()
-        self.loadUsers(since: 0)
+        self.loadUsers(since: self.since)
     }
     
     func clearStorage() {
@@ -98,6 +97,7 @@ class UsersViewModel: BaseViewModel {
                 case let .success(newUsers):
                     if since == 0 {
                         self.clearStorage()
+                        self.users.removeAll()
                     }
                     
                     newUsers.forEach { (newUser) in
@@ -106,7 +106,11 @@ class UsersViewModel: BaseViewModel {
                     
                     if let lastUser = newUsers.last {
                         self.since = Int(lastUser.id)
+                        print("LOG: Got new users from API: COUNT \(newUsers.count). LAST ID: \(self.since)")
                     }
+                    
+                    // Save to local db.
+                    CoreDataStack.shared.saveContext()
                     
                     DispatchQueue.main.async {
                         self.delegate?.reloadData()
@@ -206,6 +210,10 @@ extension UsersViewModel: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if let reachability = try? Reachability(), reachability.connection == .unavailable {
+            return
+        }
+        
         let lastItem = self.users.count - 1
         if indexPath.row == lastItem {
             let spinner = UIActivityIndicatorView(style: .medium)
