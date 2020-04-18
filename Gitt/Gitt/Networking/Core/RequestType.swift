@@ -28,9 +28,9 @@ extension RequestType {
                 if AppEnv.currentEnv == .unitUITest {
                     switch self.endpoint {
                     case .getUsers:
-                        responseData = StubbingUtility.stubbedResponse("Users.json")
+                        responseData = StubbingUtility.stubbedResponse("Users")
                     case .getUser:
-                        responseData = StubbingUtility.stubbedResponse("GetUser.json")
+                        responseData = StubbingUtility.stubbedResponse("GetUser")
                     }
                 }
                 
