@@ -84,7 +84,7 @@ public class User: NSManagedObject, Codable {
     }
 
     required convenience public init(from decoder: Decoder) throws {
-        guard let codingUserInfoKeyManagedObjectContext = CodingUserInfoKey.managedObjectContext,
+                guard let codingUserInfoKeyManagedObjectContext = CodingUserInfoKey.managedObjectContext,
             let managedObjectContext = decoder.userInfo[codingUserInfoKeyManagedObjectContext] as? NSManagedObjectContext,
             let entity = NSEntityDescription.entity(forEntityName: "User", in: managedObjectContext) else {
             fatalError("Failed to decode User")
@@ -160,9 +160,4 @@ public class User: NSManagedObject, Codable {
         try container.encode(updatedAt, forKey: .updatedAt)
         try container.encode(url, forKey: .url)
     }
-}
-
-public extension CodingUserInfoKey {
-    // Helper property to retrieve the context
-    static let managedObjectContext = CodingUserInfoKey(rawValue: "managedObjectContext")
 }

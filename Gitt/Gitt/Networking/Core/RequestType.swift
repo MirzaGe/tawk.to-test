@@ -6,6 +6,7 @@
 //  Copyright © 2020 CitusLabs. All rights reserved.
 //
 
+import CoreData
 import Foundation
 
 public typealias ResultCallback<T> = (Result<T, Error>) -> Void
@@ -21,8 +22,19 @@ extension RequestType {
         completion: @escaping ResultCallback<ResponseType>) {
         dispatcher.dispatch(request: self.data, onSuccess: { (responseData: Data) in
             do {
-                let jsonDecoder = JSONDecoder()
-                let result = try jsonDecoder.decode(ResponseType.self, from: responseData)
+                //let jsonDecoder = JSONDecoder()
+                //let result = try jsonDecoder.decode(ResponseType.self, from: responseData)
+                
+                guard let codingUserInfoKeyManagedObjectContext = CodingUserInfoKey.managedObjectContext else {
+                    fatalError("Failed to retrieve managed object context")
+                }
+                
+                let managedObjectContext = CoreDataStack.shared.persistentContainer.viewContext
+                let decoder = JSONDecoder()
+                decoder.userInfo[codingUserInfoKeyManagedObjectContext] = managedObjectContext
+                let result = try decoder.decode(ResponseType.self, from: responseData)
+                
+                CoreDataStack.shared.saveContext()
                 
                 DispatchQueue.main.async {
                     completion(.success(result))

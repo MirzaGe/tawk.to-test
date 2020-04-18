@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		298DEDD1C49D730F8B3B1DE3 /* Pods_Gitt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93B6B890F20098235A75C612 /* Pods_Gitt.framework */; };
+		400E232E244AED75003D304B /* CodingUserInfoKey+Gitt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400E232D244AED75003D304B /* CodingUserInfoKey+Gitt.swift */; };
 		401745E12440FD780055B0BD /* UserViewerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401745E02440FD780055B0BD /* UserViewerUITests.swift */; };
 		401745E32441016A0055B0BD /* MockSearchMasterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401745E22441016A0055B0BD /* MockSearchMasterDelegate.swift */; };
 		401745E52441053F0055B0BD /* BaseUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401745E42441053F0055B0BD /* BaseUnitTests.swift */; };
@@ -82,6 +83,7 @@
 /* Begin PBXFileReference section */
 		0DB5B5750FFBF29B0CDED082 /* Pods_GittTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GittTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EE702BA7F2A0ED70757630C /* Pods-Gitt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gitt.debug.xcconfig"; path = "Target Support Files/Pods-Gitt/Pods-Gitt.debug.xcconfig"; sourceTree = "<group>"; };
+		400E232D244AED75003D304B /* CodingUserInfoKey+Gitt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CodingUserInfoKey+Gitt.swift"; sourceTree = "<group>"; };
 		401745E02440FD780055B0BD /* UserViewerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewerUITests.swift; sourceTree = "<group>"; };
 		401745E22441016A0055B0BD /* MockSearchMasterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSearchMasterDelegate.swift; sourceTree = "<group>"; };
 		401745E42441053F0055B0BD /* BaseUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUnitTests.swift; sourceTree = "<group>"; };
@@ -292,6 +294,7 @@
 		40C23473243F754400A5A462 /* Users */ = {
 			isa = PBXGroup;
 			children = (
+				40D999F62448C911003ACCA3 /* APIManager.swift */,
 			);
 			path = Users;
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 				40C85A0D243F53E800D9B5BE /* UIView+Gitt.swift */,
 				40C85A0F243F572300D9B5BE /* UIViewController+Gitt.swift */,
 				40C2349024405D0900A5A462 /* UIButton+Gitt.swift */,
+				400E232D244AED75003D304B /* CodingUserInfoKey+Gitt.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -421,7 +425,6 @@
 		40C859FB243F24A100D9B5BE /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				40D999F62448C911003ACCA3 /* APIManager.swift */,
 				40D999EA2448C848003ACCA3 /* HTTPMethod.swift */,
 				40D999F02448C8C2003ACCA3 /* NetworkDispatcher.swift */,
 				40D999EC2448C860003ACCA3 /* RequestData.swift */,
@@ -705,6 +708,7 @@
 				40C2349324405D4B00A5A462 /* BaseButton.swift in Sources */,
 				40C85A00243F24E100D9B5BE /* UsersViewController.swift in Sources */,
 				40C23485243FA56600A5A462 /* BaseTableViewCell.swift in Sources */,
+				400E232E244AED75003D304B /* CodingUserInfoKey+Gitt.swift in Sources */,
 				40C2348D24404A5300A5A462 /* AppConfig.swift in Sources */,
 				40C2349124405D0900A5A462 /* UIButton+Gitt.swift in Sources */,
 				40E3A95624479D3500ACFFA6 /* Reachability.swift in Sources */,
