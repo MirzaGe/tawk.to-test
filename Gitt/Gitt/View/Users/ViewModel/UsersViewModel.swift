@@ -139,15 +139,17 @@ extension UsersViewModel: UITableViewDataSource {
             cell = UserTableViewCell()
         }
         
+        let row = indexPath.row
+        
         if self.filtering {
-            if self.filteredUsers.count > indexPath.row {
-                let shouldInvert = indexPath.row % 4 == 0
+            if self.filteredUsers.count > row {
+                let shouldInvert = row % 4 == 0 && row > 0
                 let user = self.filteredUsers[indexPath.row]
                 cell?.configure(with: user, invert: shouldInvert)
             }
         } else {
-            if self.users.count > indexPath.row {
-                let shouldInvert = indexPath.row % 4 == 0
+            if self.users.count > row {
+                let shouldInvert = row % 4 == 0 && row > 0
                 let user = self.users[indexPath.row]
                 cell?.configure(with: user, invert: shouldInvert)
             }
