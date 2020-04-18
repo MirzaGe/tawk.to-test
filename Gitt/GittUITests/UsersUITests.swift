@@ -14,8 +14,8 @@ import XCTest
 class SearchMasterUITests: BaseUITestCase {
     /// Check all views visibility
     func testAllViewsVisibility() {
-        let largeTitle = app.staticTexts["Track List"]
-        wait(forElement: largeTitle, timeout: 25)
+        let largeTitle = app.staticTexts["Users"]
+        wait(forElement: largeTitle, timeout: 10)
         
         // Static Texts - Tabs
         XCTAssert(largeTitle.exists)

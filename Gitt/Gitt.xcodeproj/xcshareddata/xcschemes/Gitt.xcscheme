@@ -35,6 +35,26 @@
          </EnvironmentVariable>
       </EnvironmentVariables>
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "4064E839243E61C100DE7384"
+               BuildableName = "GittTests.xctest"
+               BlueprintName = "GittTests"
+               ReferencedContainer = "container:Gitt.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "4064E844243E61C100DE7384"
+               BuildableName = "GittUITests.xctest"
+               BlueprintName = "GittUITests"
+               ReferencedContainer = "container:Gitt.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
