@@ -8,12 +8,18 @@
 
 let baseURL = "https://api.github.com/users"
 
+enum EndpointType {
+    case getUsers
+    case getUser
+}
+
 struct APIManager {
     /// Get all the users with `since` as parameter.
     /// `since` - the last seen user id
     struct GetUsers: RequestType {
         typealias ResponseType = [User]
         var parameters: [String : Any]?
+        var endpoint: EndpointType { .getUsers }
         var data: RequestData {
             return RequestData(path: baseURL, method: .get, params: self.parameters, headers: nil)
         }
@@ -23,6 +29,7 @@ struct APIManager {
     struct GetUser: RequestType {
         typealias ResponseType = User
         var username: String
+        var endpoint: EndpointType { .getUser }
         var data: RequestData {
             return RequestData(path: "\(baseURL)/\(username)", method: .get, params: nil, headers: nil)
         }

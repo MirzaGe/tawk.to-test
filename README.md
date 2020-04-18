@@ -32,13 +32,14 @@ Dark Mode                  |  Light Mode.
 - Started Unit UI Test.
 - Invert every 4th avatar.
 - Limit to 1 request.
+- Coredata / Offline mode.
+- Coredata save background | Main context for reading data.
 
 ---
 
 ## TODOS
 - Coordinator (still studying)
 - Finish Unit and UI Testing.
-- Coredata / Offline mode.
 
 ## Tech Stacks
 

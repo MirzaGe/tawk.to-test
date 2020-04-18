@@ -14,14 +14,26 @@ public typealias ResultCallback<T> = (Result<T, Error>) -> Void
 protocol RequestType {
     associatedtype ResponseType: Codable
     var data: RequestData { get }
+    var endpoint: EndpointType { get }
 }
 
 extension RequestType {
     func execute(
         dispatcher: NetworkDispatcher = URLSessionNetworkDispatcher.instance,
         completion: @escaping ResultCallback<ResponseType>) {
-        dispatcher.dispatch(request: self.data, onSuccess: { (responseData: Data) in
+        dispatcher.dispatch(request: self.data, onSuccess: { (data: Data) in
             do {
+                var responseData = data
+                
+                if AppEnv.currentEnv == .unitUITest {
+                    switch self.endpoint {
+                    case .getUsers:
+                        responseData = StubbingUtility.stubbedResponse("Users.json")
+                    case .getUser:
+                        responseData = StubbingUtility.stubbedResponse("GetUser.json")
+                    }
+                }
+                
                 guard let codingUserInfoKeyManagedObjectContext = CodingUserInfoKey.managedObjectContext else {
                     DispatchQueue.main.async {
                         completion(.failure(NSError(domain: "Error Core Data", code: 0, userInfo: nil)))
