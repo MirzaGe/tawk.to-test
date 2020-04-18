@@ -9,8 +9,9 @@ def test_pods
 end
 
 target 'Gitt' do
-    pod 'RxSwift',  '~> 5.0.1' # Reactive/Functional Programming Framework
-    pod 'RxCocoa',  '~> 5.0.1' # Reactive/Functional Programming Framework
+    pod 'IQKeyboardManagerSwift',     '~> 6.5.5'              # Codeless Keyboard Manager
+    pod 'RxSwift',                    '~> 5.0.1'              # Reactive/Functional Programming Framework
+    pod 'RxCocoa',                    '~> 5.0.1'              # Reactive/Functional Programming Framework
     
     target 'GittTests' do
         test_pods

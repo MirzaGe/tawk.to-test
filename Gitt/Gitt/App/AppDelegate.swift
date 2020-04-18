@@ -6,6 +6,7 @@
 //  Copyright © 2020 CitusLabs. All rights reserved.
 //
 
+import IQKeyboardManagerSwift
 import UIKit
 
 @UIApplicationMain
@@ -16,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let defaultsName = Bundle.main.bundleIdentifier!
             UserDefaults.standard.removePersistentDomain(forName: defaultsName)
         }
+        
+        IQKeyboardManager.shared.enable = true
                 
         return true
     }

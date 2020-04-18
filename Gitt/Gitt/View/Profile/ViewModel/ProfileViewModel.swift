@@ -29,13 +29,13 @@ class ProfileViewModel: BaseViewModel {
     
     private weak var delegate: ProfileDelegate?
     private var user: User!
-
+    
     // MARK: Outputs
     
     /// Determines the state of shimmer
     var startShimmer = BehaviorRelay<Bool>(value: true)
     var imageBanner = BehaviorRelay<UIImage?>(value: nil)
-
+    
     var followersPresentable = BehaviorRelay<String>(value: "Followers")
     var followingPresentable = BehaviorRelay<String>(value: "Following")
     var namePresentable = BehaviorRelay<String>(value: "Name: ")
@@ -89,41 +89,42 @@ class ProfileViewModel: BaseViewModel {
     /// Call API to get more user data
     private func loadData() {
         self.startShimmer.accept(true)
-
+        
         let username = self.user.login ?? ""
         
-        self.startShimmer.accept(false)
-
         // We can always load the offline data.
         // Since we're handling a new user data below...
         self.loadOfflineData()
         
-            
         // No need to put this in operation queue I suppose.
         // Since this only gets called once, and we don't have a pull-to-refresh
         // in this screen.
-//        APIManager.GetUser(username: username).execute { (result) in
-//            self.startShimmer.accept(false)
-//
-//            switch result {
-//            case let .success(user):
-//                // Before we apply a fresh user,
-//                // Take note of the note object...
-//                let note = self.user.note
-//
-//                self.user = user as User
-//
-//                self.user.note = note
-//
-//                // Save to local db.
-//                CoreDataStack.shared.saveContext()
-//
-//                self.getPresentables()
-//
-//            case let .failure(error):
-//                self.showError(error)
-//            }
-//        }
+        APIManager.GetUser(username: username).execute { (result) in
+            self.startShimmer.accept(false)
+            
+            switch result {
+            case let .success(newUser):
+                // Before we apply a fresh user,
+                // Take note of the note object...
+                let note = self.user.note
+                
+                if let attributes = NSEntityDescription.entity(forEntityName: "User", in: CoreDataStack.shared.persistentContainer.viewContext)?.attributesByName {
+                    for key in attributes.keys {
+                        self.user.setValue(newUser.value(forKey: key), forKey: key)
+                    }
+                }
+                
+                self.user.note = note
+                
+                // Save to local db.
+                CoreDataStack.shared.saveContext()
+                
+                self.getPresentables()
+                
+            case let .failure(error):
+                self.showError(error)
+            }
+        }
     }
     
     // MARK: Events
@@ -139,22 +140,6 @@ class ProfileViewModel: BaseViewModel {
         }
         
         CoreDataStack.shared.saveContext()
-        
-        
-        let managedObjectContext = CoreDataStack.shared.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<User>(entityName: "User")
-        
-        let newLoginId = "\(Int(self.user.id))"
-        let predicate = NSPredicate(format: "id == \(newLoginId)")
-        fetchRequest.predicate = predicate
-        
-        do {
-            let users = try managedObjectContext.fetch(fetchRequest)
-            self.user = users.first
-            self.getPresentables()
-        } catch let error {
-            print(error)
-        }
         
         self.showAlert("Saved!")
     }

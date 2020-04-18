@@ -20,7 +20,7 @@
         <attribute name="gravatarId" optional="YES" attributeType="String"/>
         <attribute name="hireable" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="htmlUrl" optional="YES" attributeType="String"/>
-        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="location" optional="YES" attributeType="String"/>
         <attribute name="login" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
@@ -39,7 +39,7 @@
         <relationship name="note" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="user" inverseEntity="Note"/>
     </entity>
     <elements>
-        <element name="User" positionX="-63" positionY="-18" width="128" height="523"/>
         <element name="Note" positionX="-63" positionY="135" width="128" height="73"/>
+        <element name="User" positionX="-63" positionY="-18" width="128" height="523"/>
     </elements>
 </model>
