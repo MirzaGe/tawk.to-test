@@ -46,6 +46,9 @@ class ProfileViewController: BaseViewController {
         self.viewModel = ProfileViewModel(profileController: self, user: self.user)
         
         self.viewModel.followersPresentable
+            .bind(to: self.rx.title)
+            .disposed(by: self.disposeBag)
+        self.viewModel.followersPresentable
             .bind(to: self.label_Followers.rx.text)
             .disposed(by: self.disposeBag)
         

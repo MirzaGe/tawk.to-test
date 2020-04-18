@@ -37,6 +37,7 @@ class ProfileViewModel: BaseViewModel {
     var startShimmer = BehaviorRelay<Bool>(value: true)
     var imageBanner = BehaviorRelay<UIImage?>(value: nil)
     
+    var navBarTitlePresentable = BehaviorRelay<String>(value: "")
     var followersPresentable = BehaviorRelay<String>(value: "Followers")
     var followingPresentable = BehaviorRelay<String>(value: "Following")
     var namePresentable = BehaviorRelay<String>(value: "Name: ")
@@ -52,6 +53,7 @@ class ProfileViewModel: BaseViewModel {
     private func getPresentables() {
         if self.user == nil { return }
         
+        self.navBarTitlePresentable.accept(self.user.name ?? "")
         self.followersPresentable.accept("Followers: \(self.user.followers)")
         self.followingPresentable.accept("Following: \(self.user.following)")
         self.namePresentable.accept("Name: \(self.user.name ?? "")")
