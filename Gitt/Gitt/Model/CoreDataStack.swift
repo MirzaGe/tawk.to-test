@@ -60,4 +60,42 @@ class CoreDataStack {
             }
         }
     }
+    
+    // MARK: - More Helpers
+    
+    /// Fetch the specific locally stored user.
+    func getUser(_ userId: Int) -> User? {
+        let managedObjectContext = CoreDataStack.shared.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<User>(entityName: "User")
+        
+        let userid = "\(userId)"
+        let predicate = NSPredicate(format: "id == \(userid)")
+        fetchRequest.predicate = predicate
+        
+        do {
+            let users = try managedObjectContext.fetch(fetchRequest)
+            return users.first
+        } catch let error {
+            print(error)
+            return nil
+        }
+    }
+    
+    /// Fetch the separated entity note for the specific user.
+    func getNoteForUser(_ user: User) -> Note? {
+        let managedObjectContext = CoreDataStack.shared.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<Note>(entityName: "Note")
+        
+        let userid = "\(Int(user.id))"
+        let predicate = NSPredicate(format: "userId == \(userid)")
+        fetchRequest.predicate = predicate
+        
+        do {
+            let notes = try managedObjectContext.fetch(fetchRequest)
+            return notes.first
+        } catch let error {
+            print(error)
+            return nil
+        }
+    }
 }

@@ -48,8 +48,6 @@ public class User: NSManagedObject, Codable {
     @NSManaged public var name: String?
     @NSManaged public var login: String?
     
-    @NSManaged public var note: Note?
-    
     enum CodingKeys: String, CodingKey {
         case avatarUrl = "avatar_url"
         case bio = "bio"
@@ -127,8 +125,6 @@ public class User: NSManagedObject, Codable {
         type = try values.decodeIfPresent(String.self, forKey: .type)
         updatedAt = try values.decodeIfPresent(String.self, forKey: .updatedAt)
         url = try values.decodeIfPresent(String.self, forKey: .url)
-        
-        note = try values.decodeIfPresent(Note.self, forKey: .note)
     }
     
     public func encode(to encoder: Encoder) throws {
@@ -164,7 +160,5 @@ public class User: NSManagedObject, Codable {
         try container.encode(type, forKey: .type)
         try container.encode(updatedAt, forKey: .updatedAt)
         try container.encode(url, forKey: .url)
-        
-        try container.encode(note, forKey: .note)
     }
 }

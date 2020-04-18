@@ -17,11 +17,11 @@ public class Note: NSManagedObject, Codable {
     }
     
     @NSManaged public var userNote: String?
-    @NSManaged public var user: User?
+    @NSManaged public var userId: Int32
     
     enum CodingKeys: String, CodingKey {
         case userNote
-        case user
+        case userId
     }
     
     required convenience public init(from decoder: Decoder) throws {
@@ -35,13 +35,13 @@ public class Note: NSManagedObject, Codable {
         
         let values = try decoder.container(keyedBy: CodingKeys.self)
         userNote = try values.decodeIfPresent(String.self, forKey: .userNote)
-        user = try values.decodeIfPresent(User.self, forKey: .user)
+        userId = try values.decodeIfPresent(Int32.self, forKey: .userId) ?? 0
     }
     
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(userNote, forKey: .userNote)
-        try container.encode(user, forKey: .user)
+        try container.encode(userId, forKey: .userId)
     }
 }
 

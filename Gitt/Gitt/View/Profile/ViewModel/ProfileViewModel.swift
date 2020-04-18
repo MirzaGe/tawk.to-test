@@ -29,6 +29,7 @@ class ProfileViewModel: BaseViewModel {
     
     private weak var delegate: ProfileDelegate?
     private var user: User!
+    private var note: Note?
     
     // MARK: Outputs
     
@@ -64,26 +65,15 @@ class ProfileViewModel: BaseViewModel {
         }
         
         // Note from different entity.
-        let note = self.user.note?.userNote ?? ""
+        let note = self.note?.userNote ?? ""
         self.notesPresentable.accept(note)
     }
     
     /// Fetch objects from Core Data for offline mode.
     override func loadOfflineData() {
-        let managedObjectContext = CoreDataStack.shared.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<User>(entityName: "User")
-        
-        let userid = "\(Int(self.user.id))"
-        let predicate = NSPredicate(format: "id == \(userid)")
-        fetchRequest.predicate = predicate
-        
-        do {
-            let users = try managedObjectContext.fetch(fetchRequest)
-            self.user = users.first
-            self.getPresentables()
-        } catch let error {
-            print(error)
-        }
+        self.user = CoreDataStack.shared.getUser(Int(self.user.id))
+        self.note = CoreDataStack.shared.getNoteForUser(self.user)
+        self.getPresentables()
     }
     
     /// Call API to get more user data
@@ -104,17 +94,11 @@ class ProfileViewModel: BaseViewModel {
             
             switch result {
             case let .success(newUser):
-                // Before we apply a fresh user,
-                // Take note of the note object...
-                let note = self.user.note
-                
                 if let attributes = NSEntityDescription.entity(forEntityName: "User", in: CoreDataStack.shared.persistentContainer.viewContext)?.attributesByName {
                     for key in attributes.keys {
                         self.user.setValue(newUser.value(forKey: key), forKey: key)
                     }
                 }
-                
-                self.user.note = note
                 
                 // Save to local db.
                 CoreDataStack.shared.saveContext()
@@ -130,13 +114,14 @@ class ProfileViewModel: BaseViewModel {
     // MARK: Events
     
     func save() {
-        if self.user.note == nil {
+        if self.note == nil {
             let newNote = Note(context: CoreDataStack.shared.persistentContainer.viewContext)
-            newNote.user = self.user
+            newNote.userId = self.user.id
             newNote.userNote = self.notesPresentable.value
-            self.user.note = newNote
+            self.note = newNote
         } else {
-            self.user.note?.userNote = self.notesPresentable.value
+            self.note?.userId = self.user.id
+            self.note?.userNote = self.notesPresentable.value
         }
         
         CoreDataStack.shared.saveContext()
