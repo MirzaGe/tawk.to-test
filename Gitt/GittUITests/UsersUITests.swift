@@ -1,5 +1,5 @@
 //
-//  SearchMasterUITests.swift
+//  UsersUITests.swift
 //  GittUITests
 //
 //  Created by Glenn Von Posadas on 4/11/20.
@@ -11,7 +11,7 @@ import XCTest
 /**
  Tests for the `UsersViewController`.
  */
-class SearchMasterUITests: BaseUITestCase {
+class UsersUITests: BaseUITestCase {
     /// Check all views visibility
     func testAllViewsVisibility() {
         let largeTitle = app.staticTexts["Users"]
@@ -19,25 +19,23 @@ class SearchMasterUITests: BaseUITestCase {
         
         // Static Texts - Tabs
         XCTAssert(largeTitle.exists)
-        XCTAssert(app.tabBars.buttons["Recents"].exists, "This tab must be existing")
-        XCTAssert(app.tabBars.buttons["Downloads"].exists, "This tab must be existing")
-        XCTAssert(app.tabBars.buttons["Search"].exists, "This tab must be existing")
-        XCTAssert(app.tabBars.buttons["Featured"].exists, "This tab must be existing")
-        XCTAssert(app.tabBars.buttons["More"].exists, "This tab must be existing")
+        XCTAssert(app.searchFields["Search"].exists, "The search bar must be existing")
+        XCTAssert(app.staticTextExists("Mojombo"), "The Mojombo first user must be existing since we are using stubbed reponse!")
+        XCTAssert(app.staticTextExists("userId: 1"), "The id of the first user must be existing since we are using stubbed reponse!")
     }
     
     /// Test pull to refresh.
     func testPullToRefresh() {
-        let firstCell = app.staticTexts["Star Wars: The Rise of Skywalker"]
+        let firstCell = app.staticTexts["Mojombo"]
         let start = firstCell.coordinate(withNormalizedOffset: (CGVector(dx: 0, dy: 0)))
         let finish = firstCell.coordinate(withNormalizedOffset: (CGVector(dx: 0, dy: 6)))
         start.press(forDuration: 0, thenDragTo: finish)
-        XCTAssert(firstCell.exists, "First cell Star Wars: The Rise of Skywalker must be existing")
+        XCTAssert(firstCell.exists, "Mojombo must still be existing after pull-to-refresh")
     }
     
     func testShowDetail() {
-        let firstCell = app.staticTexts["Star Wars: The Rise of Skywalker"]
+        let firstCell = app.staticTexts["Mojombo"]
         firstCell.tap()
-        XCTAssert(app.staticTexts["Star Wars: The Rise of Skywalker"].exists, "The title of the tapped test cell must be existing in the detail screen.")
+        XCTAssert(app.staticTexts["Mojombo"].exists, "The title of the tapped test cell must be existing in the profile screen.")
     }
 }

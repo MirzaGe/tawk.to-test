@@ -1,5 +1,5 @@
 //
-//  MockSearchMasterDelegate.swift
+//  MockUsersDelegate.swift
 //  GittTests
 //
 //  Created by Glenn Von Posadas on 4/11/20.
@@ -9,12 +9,12 @@
 import XCTest
 @testable import Gitt
 
-class MockSearchMasterDelegate: NSObject, SearchMasterDelegate {
-    var showDetailWasCalled: Bool = false
+class MockUsersDelegate: NSObject, UsersDelegate {
+    var showProfileWasCalled: Bool = false
     var reloadDataWasCalled: Bool = false
     
-    func showDetail(with result: Result) {
-        self.showDetailWasCalled = true
+    func showProfile(for user: User) {
+        self.showProfileWasCalled = true
     }
     
     func reloadData() {

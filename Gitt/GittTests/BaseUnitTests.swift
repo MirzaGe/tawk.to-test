@@ -13,27 +13,14 @@ class BaseUnitTests: XCTestCase {
 
     // MARK: - Properties
     
-    var searchMasterViewModel: SearchMasterViewModel!
-    var mockSearchMasterDelegate: MockSearchMasterDelegate!
-    
-    var searchDetailViewModel: SearchDetailViewModel!
-    var mockSearchDetailDelegate: MockSearchDetailDelegate!
-    
-    var selectedResult: Result!
+    var usersViewModel: UsersViewModel!
+    var mockUsersDelegate: MockUsersDelegate!
     
     // MARK: - Functions
     // MARK: Overrides
     
     override func setUp() {
-        self.mockSearchMasterDelegate = MockSearchMasterDelegate()
-        self.searchMasterViewModel = SearchMasterViewModel(searchMasterController: self.mockSearchMasterDelegate)
-        
-        self.selectedResult = self.searchMasterViewModel.searchResult?.results?.first
-        
-        self.mockSearchDetailDelegate = MockSearchDetailDelegate()
-        self.searchDetailViewModel = SearchDetailViewModel(
-            searchDetailController: self.mockSearchDetailDelegate,
-            selectedResult: self.selectedResult
-        )
+        self.mockUsersDelegate = MockUsersDelegate()
+        self.usersViewModel = UsersViewModel(usersController: self.mockUsersDelegate)
     }
 }
