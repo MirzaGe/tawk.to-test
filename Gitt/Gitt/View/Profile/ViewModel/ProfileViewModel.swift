@@ -46,8 +46,8 @@ class ProfileViewModel: BaseViewModel {
     
     /// Put the data to the behavior relays.
     private func getPresentables() {
-        self.followersPresentable.accept("Followers: \(self.user.followers ?? 0)")
-        self.followingPresentable.accept("Following: \(self.user.following ?? 0)")
+        self.followersPresentable.accept("Followers: \(self.user.followers)")
+        self.followingPresentable.accept("Following: \(self.user.following)")
         self.namePresentable.accept("Name: \(self.user.name ?? "")")
         self.companyPresentable.accept("Company: \(self.user.company ?? "")")
         self.blogPresentable.accept("Blog: \(self.user.blog ?? "")")
@@ -66,10 +66,7 @@ class ProfileViewModel: BaseViewModel {
     private func loadData() {
         self.startShimmer.accept(true)
         
-        guard let userId = self.user.id else {
-            self.delegate?.closeProfile()
-            return
-        }
+        let userId = Int(self.user.id)
         
         // No need to put this in operation queue I suppose.
         // Since this only gets called once, and we don't have a pull-to-refresh
@@ -79,7 +76,7 @@ class ProfileViewModel: BaseViewModel {
             
             switch result {
             case let .success(user):
-                self.user = user
+                self.user = user as User
                 self.getPresentables()
                 
             case let .failure(error):

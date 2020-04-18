@@ -43,7 +43,7 @@ BaseTableViewCell {
     
     func configure(with user: User, invert: Bool) {
         self.username.text = user.login ?? "No username"
-        self.details.text = "userId: \(user.id ?? 0)"
+        self.details.text = "userId: \(user.id)"
         self.cancellable = self.loadImage(for: user).sink { [unowned self] image in
             self.showImage(image: image, invert: invert)
         }

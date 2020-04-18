@@ -71,7 +71,9 @@ class UsersViewModel: BaseViewModel {
                         self.users.append(newUser)
                     }
                     
-                    self.since = newUsers.last?.id ?? 0
+                    if let lastUser = newUsers.last {
+                        self.since = Int(lastUser.id)
+                    }
                     
                     DispatchQueue.main.async {
                         self.delegate?.reloadData()
