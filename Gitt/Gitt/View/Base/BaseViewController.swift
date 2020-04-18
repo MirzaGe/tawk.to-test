@@ -141,6 +141,7 @@ class BaseViewController: UIViewController {
     private func setupReachability() {
         self.reachability?.whenReachable = { reachability in
             self.toggleInternetStatusView(isHidden: true)
+            NotificationCenter.default.post(name: AppNotificationName.loadOffline, object: nil)
         }
         self.reachability?.whenUnreachable = { _ in
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {

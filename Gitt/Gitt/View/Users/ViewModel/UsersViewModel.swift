@@ -6,6 +6,7 @@
 //  Copyright © 2020 CitusLabs. All rights reserved.
 //
 
+import CoreData
 import Foundation
 import RxCocoa
 import RxSwift
@@ -50,6 +51,34 @@ class UsersViewModel: BaseViewModel {
         self.loadUsers(since: 0)
     }
     
+    func clearStorage() {
+        let managedObjectContext = CoreDataStack.shared.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        do {
+            try managedObjectContext.execute(batchDeleteRequest)
+        } catch let error as NSError {
+            print(error)
+        }
+    }
+    
+    /// Fetch objects from Core Data for offline mode.
+    override func loadOfflineData() {
+        if self.users.count > 0 { return }
+        
+        let managedObjectContext = CoreDataStack.shared.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<User>(entityName: "User")
+        let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        do {
+            let users = try managedObjectContext.fetch(fetchRequest)
+            self.users = users
+            self.delegate?.reloadData()
+        } catch let error {
+            print(error)
+        }
+    }
+    
     /// Do searching... call `SearchService`.
     private func loadUsers(since: Int = 0) {
         if since == 0 {
@@ -67,6 +96,10 @@ class UsersViewModel: BaseViewModel {
                 
                 switch result {
                 case let .success(newUsers):
+                    if since == 0 {
+                        self.clearStorage()
+                    }
+                    
                     newUsers.forEach { (newUser) in
                         self.users.append(newUser)
                     }
@@ -104,6 +137,14 @@ class UsersViewModel: BaseViewModel {
             self,
             selector: #selector(self.refresh),
             name: AppNotificationName.refresh,
+            object: nil
+        )
+        
+        // Should load offline?
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.loadOfflineData),
+            name: AppNotificationName.loadOffline,
             object: nil
         )
     }

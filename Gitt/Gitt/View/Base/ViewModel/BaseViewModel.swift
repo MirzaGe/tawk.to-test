@@ -30,6 +30,7 @@ class BaseViewModel: NSObject {
     
     // MARK: - Functions
     
+    @objc func loadOfflineData() { }
     @objc func refresh() { }
     
     func showError(_ error: Error) {

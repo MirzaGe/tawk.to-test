@@ -10,4 +10,5 @@ import Foundation
 
 struct AppNotificationName {
     static let refresh = Notification.Name("refresh")
+    static let loadOffline = Notification.Name("loadOffline")
 }

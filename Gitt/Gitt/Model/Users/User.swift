@@ -12,11 +12,11 @@ import CoreData
 
 @objc(User)
 public class User: NSManagedObject, Codable {
-
+    
     @nonobjc public class func fetchRequest() -> NSFetchRequest<User> {
         return NSFetchRequest<User>(entityName: "User")
     }
-
+    
     @NSManaged public var createdAt: String?
     @NSManaged public var location: String?
     @NSManaged public var id: Int32
@@ -48,7 +48,9 @@ public class User: NSManagedObject, Codable {
     @NSManaged public var url: String?
     @NSManaged public var name: String?
     @NSManaged public var login: String?
-
+    
+    @NSManaged public var customNote: String?
+    
     enum CodingKeys: String, CodingKey {
         case avatarUrl = "avatar_url"
         case bio = "bio"
@@ -81,13 +83,15 @@ public class User: NSManagedObject, Codable {
         case type = "type"
         case updatedAt = "updated_at"
         case url = "url"
+        
+        case customNote
     }
-
+    
     required convenience public init(from decoder: Decoder) throws {
-                guard let codingUserInfoKeyManagedObjectContext = CodingUserInfoKey.managedObjectContext,
+        guard let codingUserInfoKeyManagedObjectContext = CodingUserInfoKey.managedObjectContext,
             let managedObjectContext = decoder.userInfo[codingUserInfoKeyManagedObjectContext] as? NSManagedObjectContext,
             let entity = NSEntityDescription.entity(forEntityName: "User", in: managedObjectContext) else {
-            fatalError("Failed to decode User")
+                fatalError("Failed to decode User")
         }
         
         self.init(entity: entity, insertInto: managedObjectContext)
@@ -124,6 +128,8 @@ public class User: NSManagedObject, Codable {
         type = try values.decodeIfPresent(String.self, forKey: .type)
         updatedAt = try values.decodeIfPresent(String.self, forKey: .updatedAt)
         url = try values.decodeIfPresent(String.self, forKey: .url)
+        
+        customNote = try values.decodeIfPresent(String.self, forKey: .customNote)
     }
     
     public func encode(to encoder: Encoder) throws {
@@ -159,5 +165,7 @@ public class User: NSManagedObject, Codable {
         try container.encode(type, forKey: .type)
         try container.encode(updatedAt, forKey: .updatedAt)
         try container.encode(url, forKey: .url)
+        
+        try container.encode(customNote, forKey: .customNote)
     }
 }
