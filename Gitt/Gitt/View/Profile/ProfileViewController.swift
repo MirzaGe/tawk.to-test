@@ -45,7 +45,7 @@ class ProfileViewController: BaseViewController {
         
         self.viewModel = ProfileViewModel(profileController: self, user: self.user)
         
-        self.viewModel.followersPresentable
+        self.viewModel.navBarTitlePresentable
             .bind(to: self.rx.title)
             .disposed(by: self.disposeBag)
         self.viewModel.followersPresentable
@@ -98,6 +98,9 @@ class ProfileViewController: BaseViewController {
     }
     
     private func setupUI() {
+        self.navigationItem.largeTitleDisplayMode = .never
+        self.scrollView.contentInset = UIEdgeInsets(top: 44, left: 0, bottom: 0, right: 0)
+        
         let blurEffect = UIBlurEffect(style: .light)
         let blurredEffectView = UIVisualEffectView(effect: blurEffect)
         self.imageView_BG.addSubview(blurredEffectView)
