@@ -15,7 +15,7 @@ class UsersViewModelTests: BaseUnitTests {
     }
     
     func testSearchResult() {
-        XCTAssertNotNil(self.usersViewModel.users, "Search result USERS object must not be nil.")
+        XCTAssertNotNil(self.usersViewModel.users, "Users object must not be nil.")
     }
     
     func testSearchResultData() {

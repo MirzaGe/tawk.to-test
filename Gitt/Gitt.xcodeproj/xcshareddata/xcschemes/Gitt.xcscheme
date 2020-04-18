@@ -86,7 +86,7 @@
          <EnvironmentVariable
             key = "unitUITest"
             value = "true"
-            isEnabled = "NO">
+            isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>
    </LaunchAction>

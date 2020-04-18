@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		298DEDD1C49D730F8B3B1DE3 /* Pods_Gitt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93B6B890F20098235A75C612 /* Pods_Gitt.framework */; };
 		400E232E244AED75003D304B /* CodingUserInfoKey+Gitt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400E232D244AED75003D304B /* CodingUserInfoKey+Gitt.swift */; };
-		401745E12440FD780055B0BD /* UserViewerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401745E02440FD780055B0BD /* UserViewerUITests.swift */; };
+		401745E12440FD780055B0BD /* ProfileUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401745E02440FD780055B0BD /* ProfileUITests.swift */; };
 		401745E32441016A0055B0BD /* MockUsersDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401745E22441016A0055B0BD /* MockUsersDelegate.swift */; };
 		401745E52441053F0055B0BD /* BaseUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401745E42441053F0055B0BD /* BaseUnitTests.swift */; };
 		402F5A6B24482C67003FC6D2 /* Gitt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 402F5A6924482C67003FC6D2 /* Gitt.xcdatamodeld */; };
@@ -83,7 +83,7 @@
 		0DB5B5750FFBF29B0CDED082 /* Pods_GittTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GittTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EE702BA7F2A0ED70757630C /* Pods-Gitt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gitt.debug.xcconfig"; path = "Target Support Files/Pods-Gitt/Pods-Gitt.debug.xcconfig"; sourceTree = "<group>"; };
 		400E232D244AED75003D304B /* CodingUserInfoKey+Gitt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CodingUserInfoKey+Gitt.swift"; sourceTree = "<group>"; };
-		401745E02440FD780055B0BD /* UserViewerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewerUITests.swift; sourceTree = "<group>"; };
+		401745E02440FD780055B0BD /* ProfileUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUITests.swift; sourceTree = "<group>"; };
 		401745E22441016A0055B0BD /* MockUsersDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUsersDelegate.swift; sourceTree = "<group>"; };
 		401745E42441053F0055B0BD /* BaseUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUnitTests.swift; sourceTree = "<group>"; };
 		402F5A6A24482C67003FC6D2 /* Gitt.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Gitt.xcdatamodel; sourceTree = "<group>"; };
@@ -244,7 +244,7 @@
 				40C234A82440E16900A5A462 /* Utilities */,
 				40C234A62440E12900A5A462 /* BaseUITestCase.swift */,
 				40C234AD2440E4BF00A5A462 /* UsersUITests.swift */,
-				401745E02440FD780055B0BD /* UserViewerUITests.swift */,
+				401745E02440FD780055B0BD /* ProfileUITests.swift */,
 				4064E84B243E61C100DE7384 /* Info.plist */,
 			);
 			path = GittUITests;
@@ -731,7 +731,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				40C234A72440E12900A5A462 /* BaseUITestCase.swift in Sources */,
-				401745E12440FD780055B0BD /* UserViewerUITests.swift in Sources */,
+				401745E12440FD780055B0BD /* ProfileUITests.swift in Sources */,
 				40C234AA2440E19600A5A462 /* XCUIApplication+Gitt.swift in Sources */,
 				40C234AC2440E1AE00A5A462 /* XCTestCase+Gitt.swift in Sources */,
 				40C234AE2440E4BF00A5A462 /* UsersUITests.swift in Sources */,

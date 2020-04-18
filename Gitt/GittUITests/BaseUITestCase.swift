@@ -19,6 +19,7 @@ class BaseUITestCase: XCTestCase {
         // We send a command line argument to our app,
         // to enable it to reset its state.
         app.launchArguments.append("--uitesting")
+        app.launchEnvironment = ["unitUITest" : "true"]
         app.launch()
     }
 
