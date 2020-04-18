@@ -1,11 +1,13 @@
-  
-
-
-
-# Gitt <img src="https://i.imgur.com/LwN6axb.png" width="30" height="30">
 
   
+
+
+
+  # Gitt
 ****Gitt**** is a project, an online assessment test, as part of my job application at [Tawkto.](https://www.tawk.to/)
+
+<img src="https://i.imgur.com/bYql672.png">
+
 ---
 
 
