@@ -71,6 +71,9 @@ class ProfileViewModel: BaseViewModel {
             return
         }
         
+        // No need to put this in operation queue I suppose.
+        // Since this only gets called once, and we don't have a pull-to-refresh
+        // in this screen.
         APIManager.GetUser(userId: userId).execute { (result) in
             self.startShimmer.accept(false)
             

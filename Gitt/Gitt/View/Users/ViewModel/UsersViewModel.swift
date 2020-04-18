@@ -24,6 +24,8 @@ class UsersViewModel: BaseViewModel {
     
     // MARK: - Properties
     
+    private var queue = OperationQueue()
+    
     /// The last seen user id.
     private var since: Int = 0
     private weak var delegate: UsersDelegate?
@@ -55,24 +57,33 @@ class UsersViewModel: BaseViewModel {
             self.tableViewIsHidden.accept(true)
         }
         
-        APIManager.GetUsers(parameters: ["since": since]).execute { (result) in
-            self.loaderIsHidden.accept(true)
-            self.tableViewIsHidden.accept(false)
-            
-            switch result {
-            case let .success(newUsers):
-                newUsers.forEach { (newUser) in
-                    self.users.append(newUser)
+        self.queue.cancelAllOperations()
+        self.queue.qualityOfService = .background
+        
+        let block = BlockOperation {
+            APIManager.GetUsers(parameters: ["since": since]).execute { (result) in
+                self.loaderIsHidden.accept(true)
+                self.tableViewIsHidden.accept(false)
+                
+                switch result {
+                case let .success(newUsers):
+                    newUsers.forEach { (newUser) in
+                        self.users.append(newUser)
+                    }
+                    
+                    self.since = newUsers.last?.id ?? 0
+                    
+                    DispatchQueue.main.async {
+                        self.delegate?.reloadData()
+                    }
+                    
+                case let .failure(error):
+                    self.showError(error)
                 }
-                
-                self.since = newUsers.last?.id ?? 0
-                self.delegate?.reloadData()
-                
-            case let .failure(error):
-                self.showError(error)
             }
-            
         }
+        
+        self.queue.addOperation(block)
     }
     
     // MARK: Overrides
@@ -81,6 +92,9 @@ class UsersViewModel: BaseViewModel {
         super.init()
         
         self.delegate = usersController
+        
+        self.queue.maxConcurrentOperationCount = 1
+        
         self.loadUsers()
         
         // Be notified from internet status.
